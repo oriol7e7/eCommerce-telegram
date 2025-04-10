@@ -1,198 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/store.css">
-    <link rel="icon" type="image/png" href="../images/logo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/store.css" />
+    <link rel="icon" type="image/png" href="../images/logo" />
     <title>Compra aqui!</title>
-</head>
-
-<body>
+    <meta lang="es" />
+  </head>
+  <body>
+    <!-- 1. Añadido el checkbox para controlar la modal -->
+    <input type="checkbox" id="cart-toggle" style="display: none;">
+    
     <nav class="navbar">
-        <img class="logoNav" src="../images/logo" alt="Logo Life Club MMA">
-        <ul>
-            <li>
-                <a href="../index.html">Inicio</a>
-            </li>
-            <li>
-                <a href="./pages/inscripciones.html">Inscríbete ya!</a>
-            </li>
-            <li>
-                <a href="./pages/about.html">Sobre nosotros</a>
-            </li>
-        </ul>
-
+      <img class="logoNav" src="../images/logo" alt="Logo Life Club MMA" />
+      <ul>
+        <li>
+          <a href="../index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="./pages/inscripciones.html">Inscríbete ya!</a>
+        </li>
+        <li>
+          <a href="./pages/about.html">Sobre nosotros</a>
+        </li>
+      </ul>
     </nav>
     <div class="title">
-        <h1>Adquiere los mejores productos de MMA!</h1>
-        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="white"/></svg>
+      <h1>Adquiere los mejores productos de MMA!</h1>
+      <div class="shoppingcart">
+        <!-- 2. Convertido el label en contenedor del carrito -->
+        <label for="cart-toggle" class="cart-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="45"
+            height="45"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+              fill="white"
+            />
+          </svg>
+          <span id="cart-count">0</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 3. Añadida la estructura de la modal -->
+    <div class="modal">
+      <div class="modal-content">
+        <label for="cart-toggle" class="close-modal">&times;</label>
+        <h2>Tu Carrito</h2>
+        <div id="cart-items">
+          <p>Tu carrito está vacío</p>
+        </div>
+        <form id="checkout-form">
+          <p>Aquí iría el formulario de pago cuando lo implementes</p>
+        </form>
+      </div>
     </div>
     <div class="grids">
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="../images/guantes.png" style="height: 70%; overflow: hidden;" alt="Imagen Guantes">
-            <div class="nameAndPrice">
-                <p>Guantes UFC</p>
-              
-                <p style="font-weight: lighter;">
-                    35€
-                </p>
-            </div>
-          <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-            <div class="botones">
-                <button>
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-    </div>
-</body>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
 
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item">
+        <img
+          src="../images/guantes.png"
+          style="height: 70%; overflow: hidden"
+          alt="Imagen Guantes"
+        />
+        <div class="nameAndPrice">
+          <p>Guantes UFC</p>
+
+          <p style="font-weight: lighter">35€</p>
+        </div>
+        <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+        <div class="botones">
+          <button>Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>

@@ -85,6 +85,37 @@ margin: 0;
     box-sizing: border-box;
 }
 
+
+/*MEDIA QUERIES PARA QUE CUANDO EL ANCHO DE LA PANTALLA SEA MAS PEQUEÑO O GRANDE HAYA 1, 2 O 3 COLUMNAS EN EL GRID (ITEMS)*/
+@media (width > 600px ) {
+    .grids {
+    width: 94%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px; 
+    border-radius: 5px;
+    margin: 5px auto;
+    box-sizing: border-box;
+}
+}
+
+@media (width > 1200px ) {
+    .grids {
+    width: 94%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 20px; 
+    border-radius: 5px;
+    margin: 5px auto;
+    box-sizing: border-box;
+}
+}
+
+
+
+
 .item:hover {
     transform: scale(1.05);
 }

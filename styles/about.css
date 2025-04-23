@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: 'Yearbook Solid';  
+    src: url('../fonts/YearbookSolid.woff2') format('woff2'),
+         url('../fonts/Yearbook Solid.ttf') format('truetype'); /* Fallback */
+    font-weight: normal;            
+    font-style: normal;              
+  }
+body {
+    background-color: #191919;
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-weight: 600;
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+nav, ul {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6%;
+    font-family: "Inter", sans-serif;
+    color: white;
+    padding-right: 4.5%;
+    overflow-x: hidden;
+    list-style-type: none
+
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-weight: bold;
+
+}
+
+li:hover {
+    transform: scale(1.1);
+}
+a:hover {
+    color: rgb(140, 247, 255);
+    
+}
+li {
+    transition: transform 0.3s ease;
+}
+.logoNav {
+    height: 80px;
+    width: auto;
+    padding: 10px;
+    margin-left: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logoNav:hover {
+    transform: scale(1.05);
+}
+section {
+width: 100%;
+height: 80vh;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+
+section h1 {
+    font-family: 'Yearbook Solid', sans-serif; 
+    font-size: 50px;
+}
+
+section p {
+    width: 70%; 
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+  footer {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+footer a:hover {
+
+    transform: scale(1.05);
+}
+
+footer a:hover {
+transition: transform 0.3s ease;
+}
+
+
+/*Carrusel fotos*/

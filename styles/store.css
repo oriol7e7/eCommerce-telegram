@@ -198,20 +198,32 @@ button:hover{
     cursor: pointer;    
 }
 
-svg{
-    padding-top: 18px;
-    transition: transform 0.3s ease;
-}
-svg:hover {
+.shoppingcart {
+    position: absolute; 
+    right: 20%; 
+    top: 15%;
+    transform: translateY(-50%);
+    overflow: hidden;
+  }
+  
+  .iconCart {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .iconCart:hover {
     transform: scale(1.08);
     color: rgb(140, 247, 255);
     cursor: pointer;
-}
+  }
+  
 
-
+/*
 @media (min-width: 1024px) {
     
-    svg, span {
+    .iconCart, span {
         width: 200%;
         margin-left: 600%;
     }
@@ -222,7 +234,7 @@ svg:hover {
     }
   }
 @media (max-width: 1024px) {
-    svg, span {
+    .iconCart, span {
         width: 200%;
         padding-left: 60%;
     }
@@ -231,7 +243,7 @@ svg:hover {
         padding-left: 200%;
         color: rgb(140, 247, 255);
     }
-}
+}*/
 
 /* 1. Estilos para la modal */
 .modal {
@@ -316,11 +328,17 @@ svg:hover {
     width: 100%;
     height: 10vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.icons {
+    display: flex;
     justify-content: center;
     gap: 20px;
     align-items: center;
 }
-
 footer a:hover {
 
     transform: scale(1.05);

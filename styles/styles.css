@@ -119,7 +119,7 @@ button {
 }
 
 .bottom {
-    height: 60vh;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,11 +130,17 @@ footer {
     width: 100%;
     height: 10vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.icons {
+    display: flex;
     justify-content: center;
     gap: 20px;
     align-items: center;
 }
-
 footer a:hover {
 
     transform: scale(1.05);

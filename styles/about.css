@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @font-face {
-    font-family: 'Yearbook Solid';  
+    font-family: 'Yearbook Solid';
     src: url('../fonts/YearbookSolid.woff2') format('woff2'),
-         url('../fonts/Yearbook Solid.ttf') format('truetype'); /* Fallback */
-    font-weight: normal;            
-    font-style: normal;              
-  }
+        url('../fonts/Yearbook Solid.ttf') format('truetype');
+    /* Fallback */
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: #191919;
     font-family: "Inter", sans-serif;
@@ -17,9 +20,11 @@ body {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
+    box-sizing: border-box;
 }
 
-nav, ul {
+nav,
+ul {
     width: 100%;
     height: 10vh;
     display: flex;
@@ -31,7 +36,6 @@ nav, ul {
     padding-right: 4.5%;
     overflow-x: hidden;
     list-style-type: none
-
 }
 
 a {
@@ -47,13 +51,16 @@ a {
 li:hover {
     transform: scale(1.1);
 }
+
 a:hover {
     color: rgb(140, 247, 255);
-    
+
 }
+
 li {
     transition: transform 0.3s ease;
 }
+
 .logoNav {
     height: 80px;
     width: auto;
@@ -65,29 +72,34 @@ li {
 .logoNav:hover {
     transform: scale(1.05);
 }
-section {
-width: 100%;
-height: 80vh;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+
+.quienesSomos {
+    width: 100vw;
+    height: 80vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 70px;
+    overflow: hidden;
 }
 
 
-section h1 {
-    font-family: 'Yearbook Solid', sans-serif; 
+.quienesSomos h1 {
+    font-family: 'Yearbook Solid', sans-serif;
     font-size: 50px;
 }
 
-section p {
-    width: 70%; 
+.quienesSomos p {
+    width: 70%;
     font-size: 20px;
     text-align: center;
     font-weight: 500;
 }
 
-  footer {
+footer {
     width: 100%;
     height: 10vh;
     display: flex;
@@ -96,20 +108,248 @@ section p {
     justify-content: center;
 
 }
+
 .icons {
     display: flex;
     justify-content: center;
     gap: 20px;
     align-items: center;
 }
+
 footer a:hover {
 
     transform: scale(1.05);
 }
 
 footer a:hover {
-transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 
 /*Carrusel fotos*/
+
+.carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+.imagenes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.img {
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.85);
+    height: 426px;
+    width: 904px;
+    border-radius: 15px;
+    margin: 5px;
+    object-fit: cover;
+}
+
+.texto {
+    overflow: hidden;
+    position: absolute;
+    flex-direction: column;
+    transform: translateY(10px);
+    margin-bottom: 9px;
+    backdrop-filter: blur(0px);
+    background-color: rgba(63, 106, 138, 0.11);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+
+.texto p {
+    align-items: center;
+    padding: 20px;
+    color: white;
+    font-size: 0px;
+    font-weight: 300;
+}
+
+.imagenes .texto {
+    width: 600px;
+    height: 100px;
+    transition: 1s;
+}
+
+.imagenes:hover .texto {
+    transition: height 1s, transform 1s, background-color 1s;
+    transform: translateY(-50px);
+    height: 200px;
+    background-color: rgba(63, 106, 138, 0.41);
+    backdrop-filter: blur(20px);
+}
+
+.imagenes:hover .texto p {
+    transition: font-size 0s .2s linear;
+    font-size: 20px;
+    font-weight: 500;
+
+    text-shadow: 0px 0px 10px #000000;
+}
+
+.puntos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.puntos p {
+    font-size: 100px;
+    font-weight: 500;
+    margin-top: -50px;
+    color: black;
+}
+
+.puntos .bold {
+    font-weight: 700;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgb(140, 247, 255);
+}
+.atras img, 
+.adelante img {
+    transition: all 0.3s ease;
+}
+
+.atras:hover img, 
+.adelante:hover img {
+    transform: scale(1.1); 
+    stroke: rgb(140, 247, 255);
+    
+    
+}
+
+
+/* NUESTRO EQUIPO */
+.team {
+    width: 100vw;
+    min-height: 70vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10%;
+    padding-top: 70px;
+    overflow: hidden;
+    background-color: #191919; /* Eliminado el aquamarine */
+}
+
+.team h1 {
+    font-family: 'Yearbook Solid', sans-serif;
+    font-size: 45px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.profesores {       
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+}
+
+.profesorCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Espacio para la info */
+}
+
+.profesorCard img {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profesorInfo {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px; 
+    background-color: rgba(25, 25, 25, 0.95);
+    border: 1px solid rgb(140, 247, 255);
+    border-radius: 8px;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.profesorCard:hover .profesorInfo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profesorCard:hover img {
+    transform: scale(1.1);
+}
+
+.profesorInfo h3 {
+
+    color: rgb(140, 247, 255);
+    font-size: 18px;
+}
+
+
+
+/* Grid de una columna para moviles*/
+@media (max-width: 768px) {
+    .team  {
+        height: 160vh;
+    }
+    .profesores {
+        grid-template-columns: 1fr;
+    }
+    .profesorCard {
+        margin-bottom: 100px;
+    }
+    .profesorInfo {
+        width: 180px;
+    }
+    .img {
+        height: 226px;
+        width: 404px;
+    }
+    .imagenes:hover .texto {
+        transition: height 1s, transform 1s, background-color 1s;
+        transform: translateY(-50px);
+        height: 100px;
+        width: 404px;
+        background-color: rgba(63, 106, 138, 0.41);
+        backdrop-filter: blur(20px);
+    }
+    
+    .imagenes:hover .texto p {
+        transition: font-size 0s .2s linear;
+        font-size: 12px;
+        font-weight: 500;
+    
+        text-shadow: 0px 0px 10px #000000;
+    }
+
+    .imagenes .texto {
+        width: 404px;
+        height: 100px;
+        transition: 1s;
+    }
+}

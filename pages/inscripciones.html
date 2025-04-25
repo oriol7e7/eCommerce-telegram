@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/inscripciones.css" />
+    <link rel="icon" type="image/png" href="../images/logo.jpg" />
+    <title>Compra aqui!</title>
+    <meta lang="es" />
+  </head>
+  <body>
+    <!-- 1. Añadido el checkbox para controlar la modal -->
+    <input type="checkbox" id="cart-toggle" style="display: none;">
+    
+    <nav class="navbar">
+      <img class="logoNav" src="../images/logo.jpg" alt="Logo Life Club MMA" />
+      <ul>
+        <li>
+          <a href="../index.html">Inicio</a>
+        </li>
+        <li>
+            <a href="./store.html">Explora la colección</a>
+          </li>
+        <li>
+          <a href="./about.html">Sobre nosotros</a>
+        </li>
+      </ul>
+    </nav>
+    <section>
+        <h1 class="title1">
+            Inscribete a las mejores clases de MMA!
+        </h1>
+        <div class="form">
+            <form action="inscripcion.php" method="post">
+                <!-- SECCIÓN DE DATOS PERSONALES -->
+                <fieldset>
+                    <legend>Datos personales</legend>
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Escribe aqui tu nombre completo" />
+                    
+                    <!-- SECCIÓN DE GÉNERO -->
+                    <div class="genero">
+                        <label>Género</label>
+                        <div class="genero">
+                            <label for="hombre">Hombre</label>
+                            <input type="radio" id="hombre" name="genero" value="hombre" required />
+                            <label for="mujer">Mujer</label>
+                            <input type="radio" id="mujer" name="genero" value="mujer" required />
+                        </div>
+                    </div>
+                </fieldset>
+            
+                <!-- SECCIÓN DE CONTACTO E IDENTIFICACIÓN -->
+                <fieldset>
+                    <legend>Contacto e identificación</legend>
+                    <label for="telefono">Núm. de teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Pon tu número de teléfono" />
+                    
+                    <label for="dni">DNI/NIE/Pasaporte</label>
+                    <input type="text" id="dni" name="dni" required placeholder="DNI/NIE o Pasaporte" />
+                    
+                    <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required />
+                </fieldset>
+            
+                <!-- SECCIÓN DE EDAD Y CLASES -->
+                <fieldset>
+                    <legend>Información de clases</legend>
+                    <label for="edad">Grupo de edad</label>
+                    <select required name="edad" id="edad">
+                        <option value="">Selecciona tu edad</option>
+                        <option value="kids">Kids 4-12 años</option>
+                        <option value="junior">Junior 13-17 años</option>
+                        <option value="senior">Senior +18 años</option>      
+                    </select>
+                    
+                    <label for="clase">Tipo de clase</label>
+                    <select required name="clase" id="clase">
+                        <option value="boxeo">Boxeo</option>
+                        <option value="muay-thai">Muay Thai</option>
+                        <option value="bjj">Jiu-Jitsu Brasileño</option>
+                        <option value="judo">Judo</option>
+                        <option value="wrestling">Wrestling</option>
+                    </select>
+                    
+                    <label for="horario">Horario</label>
+                    <select required name="horario" id="horario">
+                        <option value="">Selecciona primero tu edad</option>
+                    </select>
+                </fieldset>
+            
+                <!-- SECCIÓN DE INFORMACIÓN ADICIONAL -->
+                <fieldset>
+                    <legend>Información adicional</legend>
+                    <label for="comments">Información médica | Otros comentarios</label>
+                    <textarea placeholder="Añade aqui información médica relevante" name="comments" id="comments" rows="4"></textarea>
+                </fieldset>
+            
+                <!-- BOTÓN DE ENVÍO -->
+                
+                    <button type="submit" class="submit-btn">Enviar inscripción</button>
+                
+            </form>
+        </div>
+    </section>
+    <footer style="padding-top: 5%;">
+        <div class="icons">
+            <!--   Instagram logo svg  -->
+            <a href="https://www.instagram.com/lifeclub_mma/#" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M16.5 7.5l0 .01" />
+                </svg>
+            </a>
+            <!--   YT logo svg  -->
+            <a href="https://www.youtube.com/watch?v=fhQcRRi1fgg" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"
+                    data-darkreader-inline-fill="" style="--darkreader-inline-fill: currentColor;">
+                    <path
+                        d="M18 3a5 5 0 0 1 5 5v8a5 5 0 0 1 -5 5h-12a5 5 0 0 1 -5 -5v-8a5 5 0 0 1 5 -5zm-9 6v6a1 1 0 0 0 1.514 .857l5 -3a1 1 0 0 0 0 -1.714l-5 -3a1 1 0 0 0 -1.514 .857z">
+                    </path>
+                </svg>
+            </a>
+  
+            <!--   WhatsApp logo svg  -->
+            <a href="https://api.whatsapp.com/send?phone=34603567120" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" width="40" height="40" stroke-width="2"
+                    data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
+                    <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+                    <path
+                        d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1">
+                    </path>
+                </svg>
+            </a>
+  
+            <!--   Mail logo svg  -->
+            <a href="mailto:Lifeclubmma@gmail.com" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke=""
+                    style="--darkreader-inline-stroke: currentColor;" width="40" height="40" stroke-width="2">
+                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+                    <path d="M3 7l9 6l9 -6"></path>
+                </svg>
+            </a>
+            <!--   Maps logo svg  -->
+            <a href="https://www.google.com/maps/search/?api=1&query=Life+Club+MMA&query_place_id=ChIJCbHX3LK9pBIRstHX0PgmyDc"
+                target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" width="40" height="40" stroke-width="2"
+                    data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
+                    <path d="M12 9.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"></path>
+                    <path d="M6.428 12.494l7.314 -9.252"></path>
+                    <path d="M10.002 7.935l-2.937 -2.545"></path>
+                    <path d="M17.693 6.593l-8.336 9.979"></path>
+                    <path
+                        d="M17.591 6.376c.472 .907 .715 1.914 .709 2.935a7.263 7.263 0 0 1 -.72 3.18a19.085 19.085 0 0 1 -2.089 3c-.784 .933 -1.49 1.93 -2.11 2.98c-.314 .62 -.568 1.27 -.757 1.938c-.121 .36 -.277 .591 -.622 .591c-.315 0 -.463 -.136 -.626 -.593a10.595 10.595 0 0 0 -.779 -1.978a18.18 18.18 0 0 0 -1.423 -2.091c-.877 -1.184 -2.179 -2.535 -2.853 -4.071a7.077 7.077 0 0 1 -.621 -2.967a6.226 6.226 0 0 1 1.476 -4.055a6.25 6.25 0 0 1 4.811 -2.245a6.462 6.462 0 0 1 1.918 .284a6.255 6.255 0 0 1 3.686 3.092z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="rights">
+            <p>&copy; 2025 Life Club MMA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+   
+  <script src="../js/inscripciones.js"></script>
+
+    </body>
+  </html>
+  

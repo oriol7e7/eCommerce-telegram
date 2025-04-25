@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: 'Yearbook Solid';
+    src: url('../fonts/YearbookSolid.woff2') format('woff2'),
+        url('../fonts/Yearbook Solid.ttf') format('truetype');
+    /* Fallback */
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-color: #0a0a0a;
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-weight: 600;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+nav, ul {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6%;
+    font-family: "Inter", sans-serif;
+    color: white;
+    padding-right: 4.5%;
+    overflow-x: hidden;
+    list-style-type: none
+
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-weight: bold;
+
+}
+
+li:hover {
+    transform: scale(1.1);
+}
+a:hover {
+    color: rgb(140, 247, 255);
+    
+}
+li {
+    transition: transform 0.3s ease;
+}
+
+.logoNav {
+    height: 80px;
+    width: auto;
+    margin-left: 20px;
+}
+footer {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #0a0a0a;
+    margin: 0;
+
+}
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+footer a:hover {
+
+    transform: scale(1.05);
+}
+
+footer a:hover {
+transition: transform 0.3s ease;
+}
+
+section {
+    width: 100%;
+    min-height: 69.3vh;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0a0a0a;
+}
+
+section h1 {
+    font-family: 'Yearbook Solid', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.form  {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos estén en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: flex-start; /* Alinea los elementos al inicio verticalmente */
+    border-radius: 20px;
+    background-color: #191919;
+    padding: 20px;
+    gap: 10px;
+}
+
+.form label,
+.form input
+.form select
+.form textarea {
+    display: block; 
+    margin: 20px auto; 
+    width: 80%; 
+    text-align: center;
+}
+
+.form input,
+.form select {
+    width: 80%; 
+    box-sizing: border-box; 
+    text-align: center;
+    margin-left: 65px;
+}
+
+.form textarea {
+    width: 80%; 
+    height: 100px; 
+    box-sizing: border-box; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-family: "Inter", sans-serif;
+    margin-left: 65px;
+}
+
+
+.genero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-family: Inter, sa;
+    margin: 0;
+}
+
+.genero input {
+    margin-left: 0; 
+    margin-right: 10px;
+}
+
+form button {
+    border-radius: 15px;
+    width: 85%;
+    border: none;
+    background-color: rgb(0, 100, 180);
+    color: white;
+    height: 40px;
+    margin: 50px;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: "Montserrat";
+    margin-top: 30px;
+}
+
+form button:hover {
+    background-color: rgb(80, 176, 255);
+    color: white;
+    font-weight: bold;
+    transform: translateY(-2px);
+    cursor: pointer;    
+
+}
+
+fieldset {
+    width: 30vw;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(140, 247, 255);
+    border: 1px solid rgb(140, 247, 255);
+}
+legend {
+    font-weight: bold;
+    color: rgb(140, 247, 255);
+    font-family: "Inter", sans-serif;
+}
+label {
+    display: block;
+margin-bottom: 8px;
+color: rgb(140, 247, 255);
+font-size: 1.1rem;
+font-weight: bold;
+font-family: "Inter", sans-serif;
+}
+
+
+input {
+    width: 90%;
+    padding: 5px;
+    border: 2px solid #ecf0f1;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+
+input:focus {
+    border: 1px solid rgb(140, 247, 255);
+    box-shadow: 0 0 0 1.5px rgb(140, 247, 255);
+    outline: none;
+}
+
+select {
+    width: 90%;
+    padding: 5px;
+    border: 2px solid #ecf0f1;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+
+select option {
+    color: white;
+    background-color: rgb(0, 100, 180);
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+  }
+
+  select:focus {
+    border: 1px solid rgb(140, 247, 255);
+    box-shadow: 0 0 0 1.5px rgb(140, 247, 255);
+    outline: none;
+}
+
+textarea {
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+textarea:focus {
+    border: 1px solid rgb(140, 247, 255);
+    box-shadow: 0 0 0 1.5px rgb(140, 247, 255);
+    outline: none;
+}

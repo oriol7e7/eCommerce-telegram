@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="icon" type="image/png" href="../images/logo.jpg" />
+    <title>Inicia Sesión</title>
+    <meta lang="es" />
+</head>
+
+<body>
+    <section>
+        <h1>Inicia sesión para comprar los mejores productos!</h1>
+        <form action="login.php" method="POST">
+            <div class="input">
+                <label for="username">Usuario o correo electrónico</label>
+                <input type="text" id="username" name="username"
+                    placeholder="Escribe aqui tu usuario o tu correo electrónico" required>
+            </div>
+            <div class="input">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+            </div>
+            <div class="botones">
+
+                <button onclick="window.location.href='./register.html';" class="boton" id="registro">
+                    Registrate
+                </button>
+                <button type="submit" class="boton">Entrar</button>
+            </div>
+        </form>
+    </section>
+    <script>
+        document.getElementById('registro').addEventListener('click', function () {
+            window.location.href = './register.html'
+        }) 
+    </script>
+</body>
+
+</html>

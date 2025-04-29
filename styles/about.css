@@ -234,7 +234,7 @@ footer a:hover {
 /* NUESTRO EQUIPO */
 .team {
     width: 100vw;
-    height: 70vh;
+    min-height: 70vh;
     margin: 0;
     padding: 0;
     display: flex;
@@ -376,3 +376,16 @@ footer a:hover {
     cursor: pointer;  
 }
 
+.login {
+    background-color: rgb(0, 100, 180);
+    padding: 10px;
+    border-radius: 15px;
+    }
+    
+    .login:hover{
+        background-color: rgb(80, 176, 255);
+        color: white;
+        font-weight: bold;
+        transform: translateY(-2px);
+        cursor: pointer;    
+    }

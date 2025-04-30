@@ -13,7 +13,7 @@
 <body>
     <section>
         <h1>Inicia sesión para comprar los mejores productos!</h1>
-        <form action="login.php" method="POST">
+        <form action="../login.php" method="POST">
             <div class="input">
                 <label for="username">Usuario o correo electrónico</label>
                 <input type="text" id="username" name="username"
@@ -25,12 +25,13 @@
             </div>
             <div class="botones">
 
-                <button onclick="window.location.href='./register.html';" class="boton" id="registro">
-                    Registrate
-                </button>
                 <button type="submit" class="boton">Entrar</button>
             </div>
         </form>
+        
+                <button onclick="window.location.href='./register.html';" class="boton" id="registro">
+                    Registrate
+                </button>
     </section>
     <script>
         document.getElementById('registro').addEventListener('click', function () {

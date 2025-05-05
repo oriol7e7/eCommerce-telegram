@@ -37,13 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "<script>
                     alert('Error: Contraseña incorrecta.');
-                    window.location.href = './login.html';
+                    window.location.href = './pages/login.html';
                   </script>";
         }
     } else {
         echo "<script>
                 alert('Error: Usuario o correo no encontrado.');
-                window.location.href = './login.html';
+                window.location.href = './pages/login.html';
               </script>";
     }
 }

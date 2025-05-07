@@ -389,3 +389,51 @@ footer a:hover {
         transform: translateY(-2px);
         cursor: pointer;    
     }
+
+/*MEDIA QUERIES PARA EL NAV Y TITULO EN MOVIL*/
+@media (max-width: 768px) {
+    /* Reducir el tamaño del título */
+    .title1 {
+        font-size: 1.5rem;
+        width: 70%;
+    }
+
+    /* Reducir el tamaño de la barra de navegación */
+    nav, ul {
+        height: 8vh;
+        gap: 4%;
+        padding-right: 2%;
+    }
+
+    a {
+        font-size: 0.8rem;
+    }
+
+    .logoNav {
+        height: 60px;
+    }
+
+    /* Ajustar el botón de login */
+    a.login {
+        padding: 3px 3px;
+        border-radius: 10px;
+        gap: 1%;
+        background-color: transparent;
+    }
+    iframe {
+        width: 100%;
+        height: 230px;
+    }
+}
+
+@media (max-width: 568px) {
+    a {
+        font-size: 0.7rem;
+    }
+
+    .login {
+        padding: 4px 8px;
+
+        border-radius: 8px;
+    }
+}

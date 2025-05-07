@@ -280,3 +280,105 @@ textarea:focus {
         transform: translateY(-2px);
         cursor: pointer;    
     }
+
+/*MEDIA QUERIES PARA EL NAV Y TITULO EN MOVIL*/
+@media (max-width: 768px) {
+    /* Reducir el tamaño del título */
+    .title1 {
+        font-size: 1.5rem;
+        width: 90%;
+    }
+
+    /* Reducir el tamaño de la barra de navegación */
+    nav, ul {
+        height: 8vh;
+        gap: 4%;
+        padding-right: 2%;
+    }
+
+    a {
+        font-size: 0.8rem;
+    }
+
+    .logoNav {
+        height: 60px;
+    }
+    a.login {
+        padding: 3px 3px;
+        border-radius: 10px;
+        gap: 1%;
+        background-color: transparent;
+    }
+
+    /* Ajustar el formulario */
+    .form {
+        width: 90%; /* Ajustar el ancho del formulario */
+        padding: 10px; /* Reducir el padding */
+
+    }
+    .form label,
+    .form input,
+    .form select,
+    .form textarea {
+        width: 100%; /* Hacer que los elementos ocupen todo el ancho */
+        margin: 10px auto; /* Reducir el margen */
+
+    }
+
+    fieldset {
+        width: 100%; /* Ajustar el ancho del fieldset */
+        padding: 10px; /* Reducir el padding */
+        margin-left: -7px;
+    }
+
+    legend {
+        font-size: 1rem; /* Reducir el tamaño del texto */
+    }
+
+    form button {
+        width: 100%; /* Hacer que el botón ocupe todo el ancho */
+        font-size: 1rem; /* Reducir el tamaño del texto */
+        padding: 10px; /* Ajustar el padding */
+        margin-left: -7px;
+    }
+}
+
+@media (max-width: 568px) {
+    a {
+        font-size: 0.7rem;
+    }
+
+    .login {
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+
+    /* Ajustar el formulario para pantallas más pequeñas */
+    .form {
+        width: 95%; /* Reducir aún más el ancho */
+        padding: 5px; /* Reducir el padding */
+    }
+
+    .form label,
+    .form input,
+    .form select,
+    .form textarea {
+        width: 100%; /* Mantener los elementos al 100% del ancho */
+        margin: 5px auto; /* Reducir el margen */
+    }
+
+    fieldset {
+        width: 100%; /* Mantener el fieldset al 100% */
+        padding: 5px; /* Reducir el padding */
+    }
+
+    legend {
+        font-size: 0.9rem; /* Reducir aún más el tamaño del texto */
+    }
+
+    form button {
+        width: 100%; /* Mantener el botón al 100% del ancho */
+        font-size: 0.9rem; /* Reducir el tamaño del texto */
+        padding: 8px; /* Ajustar el padding */
+    }
+}

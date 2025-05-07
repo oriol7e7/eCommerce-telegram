@@ -378,7 +378,7 @@ transition: transform 0.3s ease;
     }
 
 
-
+/*MEDIA QUERIIES PARA EL NAV Y TITULO EN MOVIL*/
 @media (max-width: 768px) {
         /* Reducir el tamaño del título */
         .title1 {
@@ -423,5 +423,56 @@ transition: transform 0.3s ease;
         .login {
             padding: 4px;
             font-size: .5rem;
+        }
+    }
+
+
+    @media (max-width: 1020px) {
+        /* Reducir el tamaño del título */
+        .title1 {
+            font-size: 1.5rem;
+            width: 70%;
+        }
+    
+        /* Reducir el tamaño de la barra de navegación */
+        nav, ul {
+            height: 8vh;
+            gap: 4%;
+            padding-right: 2%;
+        }
+    
+        a {
+            font-size: .8rem;
+            
+        }
+
+        .logoNav {
+            height: 60px;
+        }
+    
+        /* Ajustar la posición del carrito de compras */
+        .shoppingcart {
+            top: 15%; 
+            right: 8%; 
+        }
+    
+        #cart-count {
+            top: -10px; 
+            right: 5px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+
+    
+        /* Ajustar la posición del carrito de compras */
+        .shoppingcart {
+            top: 15%; 
+            right: 8%; 
+        }
+    
+        #cart-count {
+            top: -10px; 
+            right: 5px;
         }
     }

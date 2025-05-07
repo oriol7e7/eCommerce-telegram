@@ -96,8 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../index.html?status=success");
     exit();
 } else {
+    $conexion->close();
     die("Método no permitido");
 }
-
-$conexion->close();
 ?>

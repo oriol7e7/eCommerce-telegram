@@ -1,53 +1,48 @@
 <?php
-session_start(); // Iniciar sesión
+session_start();
 
+// Configuración de BD (usando los mismos datos que en tu script de inscripción)
 $servidor = "localhost";
 $usuario = "root";
 $clave = "pirineus";
 $bd = "life_club_MMA";
 
-// Conectar a la base de datos
-$conexion = mysqli_connect($servidor, $usuario, $clave, $bd);
-
-if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
+$conexion = new mysqli($servidor, $usuario, $clave, $bd);
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Procesar login si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitizar los datos para evitar SQL Injection
-    $input = mysqli_real_escape_string($conexion, $_POST['username']); // Puede ser usuario o correo
-    $password = mysqli_real_escape_string($conexion, $_POST['password']);
+    $input = $conexion->real_escape_string($_POST['username']);
+    $password = $conexion->real_escape_string($_POST['password']);
 
-    // Consulta que busca por usuario o correo
-    $consulta = "SELECT username, password FROM Usuarios WHERE username = '$input' OR correo = '$input'";
-    $resultado = mysqli_query($conexion, $consulta);
+    // Buscar usuario en la tabla `Usuarios` (debes crearla si no existe)
+    $sql = "SELECT username, password FROM Usuarios WHERE username = ? OR correo = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("ss", $input, $input);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (mysqli_num_rows($resultado) > 0) {
-        $fila = mysqli_fetch_assoc($resultado);
-        $password_bd = $fila['password']; // Contraseña en la base de datos
-
-        // Comparar contraseñas (sin hash por ahora)
-        if ($password === $password_bd) {
-            $_SESSION['username'] = $fila['username']; // Guardar el nombre de usuario en la sesión
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        
+        // Verificar contraseña (sin hash por ahora)
+        if ($password === $user['password']) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $user['username'];
+            
+            // Redirigir y enviar datos a JS
             echo "<script>
-                    alert('¡Login exitoso! Bienvenido, " . $fila['username'] . "');
-                    window.location.href = './pages/store.html';
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('username', '" . $user['username'] . "');
+                    window.location.href = 'pages/store.html';
                   </script>";
+            exit();
         } else {
-            echo "<script>
-                    alert('Error: Contraseña incorrecta.');
-                    window.location.href = './pages/login.html';
-                  </script>";
+            echo "<script>alert('Contraseña incorrecta'); history.back();</script>";
         }
     } else {
-        echo "<script>
-                alert('Error: Usuario o correo no encontrado.');
-                window.location.href = './pages/login.html';
-              </script>";
+        echo "<script>alert('Usuario no encontrado'); history.back();</script>";
     }
 }
-
-// Cerrar conexión
-mysqli_close($conexion);
 ?>

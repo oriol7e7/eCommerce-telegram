@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Telegram
     $token = "8059945037:AAFOX8hYxVavIUuHLx2LbbABVWQd3FBiP6U";
-    $chat_id = "5986349947";
+    $chat_id = "-4792860353";
    
     $mensaje = "NUEVA INSCRIPCIÓN:\n"
              . "📦 Nombre: $name\n"
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         error_log("Error al enviar a Telegram");
     }
 
-    // Insertar en BD
+    // Insertar DATOS EN  BD
     $stmt = $conexion->prepare("INSERT INTO Alumnos
                                (Nombre_Completo, Genero, Telefono, DNI,
                                 Fecha_Nacimiento, Grupo_Edad, Clase, Horario, Comentarios)
@@ -93,8 +93,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
    
     // Redirección exitosa
-    header("Location: ../index.html?status=success");
-    exit();
+echo "<script>
+    alert('¡Alumno inscrito! La escuela se pondrá en contacto contigo pronto.');
+    window.location.href = '../index.html';
+</script>";
+exit();
 } else {
     $conexion->close();
     die("Método no permitido");

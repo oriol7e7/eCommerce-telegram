@@ -26,18 +26,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         
-        // Verificar contraseña (sin hash por ahora)
+        // Verificar contraseña 
         if ($password === $user['password']) {
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $user['username'];
             
-            // Redirigir y enviar datos a JS
-            echo "<script>
-                    localStorage.setItem('isLoggedIn', 'true');
-                    localStorage.setItem('username', '" . $user['username'] . "');
-                    window.location.href = 'pages/store.html';
-                  </script>";
+
+            // Redirigir con parámetros en URL para JS (más seguro que localStorage)
+            header("Location: pages/store.html?login=success&user=" . urlencode($user['username']));
             exit();
+            // ---------------------------- //
         } else {
             echo "<script>alert('Contraseña incorrecta'); history.back();</script>";
         }

@@ -465,7 +465,7 @@ transition: transform 0.3s ease;
     @media (max-width: 1200px) {
 
     
-        /* Ajustar la posición del carrito de compras */
+         Ajustar la posición del carrito de compras 
         .shoppingcart {
             top: 15%; 
             right: 8%; 

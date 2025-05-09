@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         
         // Verificar contraseña 
-        if ($password === $user['password']) {
+    if (password_verify($password, $user['password'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $user['username'];
             

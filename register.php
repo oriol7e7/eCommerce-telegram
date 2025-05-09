@@ -18,9 +18,10 @@ if (isset($_POST['enviar'])) {
     $email = mysqli_real_escape_string($coneccion, $_POST['email']);
     $username = mysqli_real_escape_string($coneccion, $_POST['username']);
     $password = mysqli_real_escape_string($coneccion, $_POST['password']);
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Especificar los nombres de las columnas en la inserción
-    $insertar = "INSERT INTO Usuarios (username, password, correo) VALUES ('$username', '$password', '$email')";
+    $insertar = "INSERT INTO Usuarios (username, password, correo) VALUES ('$username', '$hash', '$email')";
 
     $resultado = mysqli_query($coneccion, $insertar);
 

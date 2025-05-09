@@ -1,18 +1,27 @@
 
-// Detectar si el usuario ha iniciado sesión
-let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-
-if (isLoggedIn) {
-  // Oculta el botón de login
-  const loginBtn = document.getElementById('loginBtn');
-  if (loginBtn) {
-    loginBtn.style.display = 'none';
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
   }
 
-  // Muestra un texto de prueba (puedes ponerlo donde quieras)
-  const testText = document.createElement('p');
-  testText.textContent = 'TEST: Usuario logueado';
-  testText.style.color = 'lime';
-  document.body.appendChild(testText); // O puedes añadirlo a un contenedor específico
-}
-    
+  // Detectar login desde la URL
+  const loginParam = getQueryParam('login');
+  const userParam = getQueryParam('user');
+
+  if (loginParam === 'success' && userParam) {
+    // Guardar en localStorage
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('username', decodeURIComponent(userParam));
+  }
+
+  // Leer desde localStorage (esto funcionará incluso en otras páginas)
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const username = localStorage.getItem('username');
+
+  if (isLoggedIn && username) {
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+      loginBtn.textContent = `Bienvenido, ${username} `;
+      loginBtn.href = "#";
+    }
+  }

@@ -1,39 +1,52 @@
 <?php
+$servidor = "localhost";
+$usuario = "root";
+$clave = "pirineus";
+$bd = "life_club_MMA";
 
-    $servidor = "localhost";
-    $usuario = "root";
-    $clave = "pirineus";
-    $bd = "life_club_MMA";
-
-    $coneccion = mysqli_connect($servidor, $usuario, $clave, $bd);
-
-    if (!$coneccion) {
-        die("Error de conexión: " . mysqli_connect_error());
-    }
-
+$conexion = mysqli_connect($servidor, $usuario, $clave, $bd);
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
 
 if (isset($_POST['enviar'])) {
+    $email = mysqli_real_escape_string($conexion, $_POST['email']);
+    $username = mysqli_real_escape_string($conexion, $_POST['username']);
+    $password = mysqli_real_escape_string($conexion, $_POST['password']);
 
-    // Sanitizar los datos para evitar SQL Injection
-    $email = mysqli_real_escape_string($coneccion, $_POST['email']);
-    $username = mysqli_real_escape_string($coneccion, $_POST['username']);
-    $password = mysqli_real_escape_string($coneccion, $_POST['password']);
+    // Validar campos vacíos
+    if (empty($email) || empty($username) || empty($password)) {
+        echo "<script>alert('Todos los campos son obligatorios.'); history.back();</script>";
+        exit();
+    }
+
+    // Verificar si el usuario o correo ya existen
+    $sql_check = "SELECT username, correo FROM Usuarios WHERE username = ? OR correo = ?";
+    $stmt_check = $conexion->prepare($sql_check);
+    $stmt_check->bind_param("ss", $username, $email);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+
+    if ($result_check->num_rows > 0) {
+        echo "<script>alert('El nombre de usuario o correo ya están registrados.'); history.back();</script>";
+        exit();
+    }
+
+    // Hashear la contraseña
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    // Especificar los nombres de las columnas en la inserción
-    $insertar = "INSERT INTO Usuarios (username, password, correo) VALUES ('$username', '$hash', '$email')";
+    // Insertar nuevo usuario
+    $sql_insert = "INSERT INTO Usuarios (username, password, correo) VALUES (?, ?, ?)";
+    $stmt_insert = $conexion->prepare($sql_insert);
+    $stmt_insert->bind_param("sss", $username, $hash, $email);
 
-    $resultado = mysqli_query($coneccion, $insertar);
-
-    if ($resultado) {
-        // Alerta y redirección
+    if ($stmt_insert->execute()) {
         echo "<script>
-                alert('¡Usuario registrado! Ahora serás redigirido para iniciar sesión.');
+                alert('¡Registro exitoso! Ahora inicia sesión.');
                 window.location.href = '/pages/login.html';
               </script>";
     } else {
-        // Mostrar error en caso de fallo
-        echo "Error en la consulta: " . mysqli_error($coneccion);
+        echo "<script>alert('Error al registrar. Intenta nuevamente.'); history.back();</script>";
     }
 }
 ?>

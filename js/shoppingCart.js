@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Si el usuario está logueado (isLoggedIn es true) y hay un nombre de usuario guardado, se actualiza el contenido del elemento 'login-info'.
     if (isLoggedIn && username && loginInfoElement) {
-        loginInfoElement.textContent = `Usuario: ${username}`; // Se muestra el nombre del usuario.
+        loginInfoElement.textContent = `👤 ${username}`; // Se muestra el nombre del usuario.
+        loginInfoElement.classList.add("usuario-activo"); // Agrega una clase cuando hay usuario logueado
 
         // Además, si el formulario de venta existe en el documento, se cambia su display para que aparezca.
         if (ventaFormElement) {

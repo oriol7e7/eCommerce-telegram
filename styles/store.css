@@ -335,6 +335,16 @@ hr {
     display: flex;
 }
 
+/*CLASE SOLO PARA CUANDO HAY UN USUARIO LOGEADO, SE ESTILA EL TEXTO DONDE SALE TU USUARIO*/
+.usuario-activo {
+    font-weight: bold;
+    color: rgb(140, 247, 255);
+    background-color: #383838;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+
 .modal-content {
     background: #191919;
     padding: 30px;

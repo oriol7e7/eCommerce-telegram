@@ -33,13 +33,22 @@ if (isLoggedIn && username && loginBtn) {
     userMenu.style.left = `${rect.left + window.scrollX}px`;
   });
 
-  // Cerrar sesión al hacer clic en el botón de logout
   logoutBtn.addEventListener('click', function (e) {
     e.preventDefault();
+
+    // Eliminar información de sesión del localStorage
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
+
+    // Ocultar el menú de usuario
     userMenu.style.display = 'none';
+
+    // Restaurar el botón de login
     loginBtn.textContent = "Iniciar sesión";
     loginBtn.href = "/pages/login.html";
-  });
+
+    // Redirigir a la página sin parámetros en la URL
+    window.location.href = "/pages/store.html";
+});
+
 }

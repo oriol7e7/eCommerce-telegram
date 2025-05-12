@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (isLoggedIn && username) {
                 loginInfoElement.textContent = ` ${username}`;
-                ventaFormElement.style.display = 'flex'; // Mostrar usuario
+                ventaFormElement.style.display = 'block'; // Mostrar usuario
             } else {
                 loginInfoElement.innerHTML = 'Inicia sesión <a class="login-link" href="./login.html">aquí</a> para poder comprar';
                 ventaFormElement.style.display = 'none';

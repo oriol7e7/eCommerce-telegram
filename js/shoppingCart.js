@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (isLoggedIn && username) {
                 loginInfoElement.textContent = `${emojiUsuario} ${username}`;
-                ventaFormElement.style.display = 'inline';
+                ventaFormElement.style.display = 'inline-block'; // Mostrar usuario
             } else {
                 loginInfoElement.innerHTML = 'Inicia sesión <a class="login-link" href="./login.html">aquí</a> para poder comprar';
                 ventaFormElement.style.display = 'none';

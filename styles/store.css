@@ -272,6 +272,17 @@ button:hover{
     justify-content: center;
     align-items: center;
   }
+  .login-link {
+    font-size: 1rem;
+    text-decoration: underline;
+    font-style: italic;
+    color:rgb(80, 176, 255);
+}
+
+.login-link:hover {
+    color: rgb(140, 247, 255);
+}
+
   
   #cart-toggle:checked ~ .modal {
     display: flex;

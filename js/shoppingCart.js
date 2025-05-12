@@ -21,3 +21,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+
+
+//Funcion para sumar al contador de productos del carrito
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Seleccionar elementos
+    const addToCartButtons = document.querySelectorAll('.botones button'); // Todos los botones
+    const cartCount = document.getElementById('cart-count'); // Elemento del contador
+
+    // 2. Inicializar contador (usando localStorage)
+    let count = localStorage.getItem('cartCount') || 0;
+    cartCount.textContent = count;
+
+    // 3. Añadir evento a cada botón
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 4. Incrementar contador
+            count++;
+            cartCount.textContent = count;
+            
+            // 5. Guardar en localStorage (para persistencia)
+            localStorage.setItem('cartCount', count);
+            
+            // Opcional: Feedback visual
+            button.textContent = '✔ Item añadido';
+            setTimeout(() => {
+                button.textContent = 'Añadir al carrito';
+            }, 1000);
+        });
+    });
+});

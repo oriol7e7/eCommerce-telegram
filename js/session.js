@@ -26,13 +26,13 @@ const username = localStorage.getItem('username'); // Obtiene el nombre del usua
 const loginBtn = document.getElementById('loginBtn'); // Botón de inicio de sesión
 const userMenu = document.getElementById('userMenu'); // Menú desplegable del usuario
 const logoutBtn = document.getElementById('logoutBtn'); // Botón de cerrar sesión
-const loginInfoElement = document.getElementById('login-info'); // Área donde se muestra el usuario
+const loginInfoElement = document.getElementById('loginInfo'); // Área donde se muestra el usuario
 const ventaFormElement = document.getElementById('venta-form'); // Formulario de compra
 
 // Verificación en consola para depuración
 console.log("Estado de sesión:", isLoggedIn);
 console.log("Usuario:", username);
-console.log("Elemento login-info:", loginInfoElement);
+console.log("Elemento loginInfo:", loginInfoElement);
 console.log("Elemento venta-form:", ventaFormElement);
 
 if (isLoggedIn && username) {
@@ -95,7 +95,7 @@ logoutBtn.addEventListener('click', function (e) {
         loginBtn.href = "/pages/login.html";
     }
 
-    // Restaurar `login-info` al mensaje por defecto.
+    // Restaurar `loginInfo` al mensaje por defecto.
     if (loginInfoElement) {
         loginInfoElement.innerHTML = 'Inicia sesión <a class="login-link" href="./login.html">aquí</a> para poder comprar';
         loginInfoElement.classList.remove("usuario-activo");

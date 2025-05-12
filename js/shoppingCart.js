@@ -1,3 +1,4 @@
+const emojiUsuario = "\u{1F464}"; // Código Unicode para 👤
 // Esperamos a que todo el contenido del documento se haya cargado antes de ejecutar el código.
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Si el usuario está logueado (isLoggedIn es true) y hay un nombre de usuario guardado, se actualiza el contenido del elemento 'login-info'.
     if (isLoggedIn && username && loginInfoElement) {
-        loginInfoElement.textContent = `👤 ${username}`; // Se muestra el nombre del usuario.
+        loginInfoElement.textContent = `${emojiUsuario} ${username}`; // Se muestra el nombre del usuario.
         loginInfoElement.classList.add("usuario-activo"); // Agrega una clase cuando hay usuario logueado
 
         // Además, si el formulario de venta existe en el documento, se cambia su display para que aparezca.

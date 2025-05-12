@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const username = localStorage.getItem('username');
 
             if (isLoggedIn && username) {
-                loginInfoElement.textContent = `${emojiUsuario} ${username}`;
+                loginInfoElement.textContent = ` ${username}`;
                 ventaFormElement.style.display = 'flex'; // Mostrar usuario
             } else {
                 loginInfoElement.innerHTML = 'Inicia sesión <a class="login-link" href="./login.html">aquí</a> para poder comprar';

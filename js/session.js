@@ -1,5 +1,5 @@
 // Definimos el emoji para representar al usuario.
-const emojiUsuario = "\u{1F464}"; // Código Unicode para 👤
+
 
 // Función para obtener parámetros de la URL.
 // Se utiliza para detectar si el usuario ha iniciado sesión a través de una redirección.
@@ -44,7 +44,7 @@ if (isLoggedIn && username) {
     }
 
     if (loginInfoElement) {
-        loginInfoElement.textContent = `${emojiUsuario} ${username}`;
+        loginInfoElement.textContent = `${username}`;
         loginInfoElement.classList.add("usuario-activo");
     }
 

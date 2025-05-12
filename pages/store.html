@@ -1,382 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/store.css" />
-    <link rel="icon" type="image/png" href="../images/logo.jpg" />
-    <title>Compra aqui!</title>
-    <meta lang="es" />
-  </head>
-  <body>
-    <!-- 1. Añadido el checkbox para controlar la modal -->
-    <input type="checkbox" id="cart-toggle" style="display: none;">
-    
-    <nav class="navbar">
-      <img class="logoNav" src="../images/logo.jpg" alt="Logo Life Club MMA" />
-      <ul>
-        <li>
-          <a href="../index.html">Inicio</a>
-        </li>
-        <li>
-          <a href="./inscripciones.html">Inscríbete ya!</a>
-        </li>
-        <li>
-          <a href="./about.html">Sobre nosotros</a>
-        </li>
-        <li>
-          <a id="loginBtn" class="login" href="./login.html">Inicia sesión!</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/store.css" />
+  <link rel="icon" type="image/png" href="../images/logo.jpg" />
+  <title>Compra aqui!</title>
+  <meta lang="es" />
+</head>
+
+<body>
+  <!-- 1. Añadido el checkbox para controlar la modal -->
+  <input type="checkbox" id="cart-toggle" style="display: none;">
+
+  <nav class="navbar">
+    <img class="logoNav" src="../images/logo.jpg" alt="Logo Life Club MMA" />
+    <ul>
+      <li>
+        <a href="../index.html">Inicio</a>
       </li>
-      </ul>
-    </nav>
-    <div id="userMenu" style="display: none; z-index:100; position: absolute; right: 100px; top: 60px;  background:rgba(89, 89, 89, 0.9)
+      <li>
+        <a href="./inscripciones.html">Inscríbete ya!</a>
+      </li>
+      <li>
+        <a href="./about.html">Sobre nosotros</a>
+      </li>
+      <li>
+        <a id="loginBtn" class="login" href="./login.html">Inicia sesión!</a>
+      </li>
+    </ul>
+  </nav>
+  <div id="userMenu" style="display: none; z-index:100; position: absolute; right: 100px; top: 60px;  background:rgba(89, 89, 89, 0.9)
 ; padding: 8px; border-radius: 6px;">
-					<a href="#" id="logoutBtn">Cerrar sesión</a>
-				</div>
-    <div class="title">
-      <h1 class="title1">Adquiere los mejores productos de MMA!</h1>
-      <div class="shoppingcart">
-        <!-- 2. Convertido el label en contenedor del carrito -->
-        <label for="cart-toggle" class="cart-icon">
-          <svg
-            class="iconCart"
-            xmlns="http://www.w3.org/2000/svg"
-            width="45"
-            height="45"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
-              fill="white"
-            />
-          </svg>
-          <span id="cart-count">0</span>
-        </label>
+    <a href="#" id="logoutBtn">Cerrar sesión</a>
+  </div>
+  <div class="title">
+    <h1 class="title1">Adquiere los mejores productos de MMA!</h1>
+    <div class="shoppingcart">
+      <!-- 2. Convertido el label en contenedor del carrito -->
+      <label for="cart-toggle" class="cart-icon">
+        <svg class="iconCart" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
+          <path
+            d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+            fill="white" />
+        </svg>
+        <span id="cart-count">0</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Añadida la estructura de la modal -->
+  <div class="modal">
+    <div class="modal-content">
+      <label for="cart-toggle" class="close-modal">&times;</label>
+      <h2>Tu Carrito</h2>
+      <div id="cart-items">
+        <p>Tu carrito está vacío</p>
+      </div>
+      <p id="login-info">Inicia sesión <a class="login-link" href="./login.html">aquí</a> para poder comprar</p>
+      <form style="display: none;" id="venta-form">
+        <div id="info-pago" class="info-pago">
+          <label style="font-size: 1.2rem;" for="info-section">Modificar dirección de envío:</label>
+          <label for="name">Nombre completo:</label>
+          <input type="text" name="name" id="name" placeholder="Agrega aqui tu nombre completo:">
+          <br>
+          <br>
+          <label for="address">Agrega la dirección de envio:</label>
+          <label style="font-size: .85rem; font-weight: 500;" for="address">Direccion 1:</label>
+          <input style="width: 80%;" type="text" name="direccion2"
+            placeholder="Calle, número, piso (ejemplo: Av. Gran Vía, 123, 4ºB)" autocomplete="street-address">
+          <br>
+          <br>
+          <label style="font-size: .85rem; font-weight: 500;" for="address">Direccion 2:</label>
+          <input style="width: 80%;" type="text" name="direccion1"
+            placeholder="Código postal, ciudad, país (ejemplo: 08001, Barcelona, España)" autocomplete="street-address">
+          <br>
+          <br>
+          <label for="telefono">Añade tu número de telefono:</label>
+          <input type="tel" name="telefono" id="telefono" placeholder="Ej: 67234234...">
+        </div>
+
+        <br><br>
+        <div class="precio">
+          <h1>Resumen del pedido:</h1>
+          <div class="apartado-precio">
+            <h3>Subtotal: </h3>
+            <h4>0€</h4>
+          </div>
+          <div class="apartado-precio">
+            <h3>Envío: </h3>
+            <h4 style="color: #00ff00;">Gratis</h4>
+          </div>
+          <hr>
+          <div class="apartado-precio">
+            <h3>Total: </h3>
+            <h4>0€</h4>
+          </div>
+        <button type="submit" id="submitBtn">Compra ya!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="grids">
+
+    <!--   ITEM   -->
+
+    <div class="item">
+      <img src="../images/guantes.png" style="height: 70%; overflow: hidden" alt="Imagen Guantes" />
+      <div class="nameAndPrice">
+        <p>Guantes UFC</p>
+
+        <p style="font-weight: lighter">35€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
       </div>
     </div>
 
-    <!-- Añadida la estructura de la modal -->
-    <div class="modal">
-      <div class="modal-content">
-        <label for="cart-toggle" class="close-modal">&times;</label>
-        <h2>Tu Carrito</h2>
-        <div id="cart-items">
-          <p>Tu carrito está vacío</p>
-        </div>
-        <form id="venta-form">
-          <p id="login-info">Inicia sesión <a class="login-link" href="./login.html">aquí</a> para poder comprar</p>
-        </form>
+    <!--   ITEM   -->
+
+
+    <div class="item">
+      <img src="../images/bucal.png" style="height: 70%; overflow: hidden" alt="Imagen bucal" />
+      <div class="nameAndPrice">
+        <p>Venum Challenger Bucal Rojo/Amarillo</p>
+
+        <p style="font-weight: lighter">14,99€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
       </div>
     </div>
-    <div class="grids">
 
-            <!--   ITEM   -->
+    <!--   ITEM   -->
 
-      <div class="item">
-        <img
-          src="../images/guantes.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen Guantes"
-        />
-        <div class="nameAndPrice">
-          <p>Guantes UFC</p>
 
-          <p style="font-weight: lighter">35€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
+    <div class="item">
+      <img src="../images/espinillera.png" style="height: 65%; overflow: hidden" alt="Imagen espinillera" />
+      <div class="nameAndPrice">
+        <p>Espinilleras protector Venum Kontact Negro-Oro</p>
+
+        <p style="font-weight: lighter">26,99€</p>
       </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/bucal.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen bucal"
-        />
-        <div class="nameAndPrice">
-          <p>Venum Challenger Bucal Rojo/Amarillo</p>
-
-          <p style="font-weight: lighter">14,99€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
-      </div>
-           
-            <!--   ITEM   -->
-
-
-            <div class="item">
-              <img
-                src="../images/espinillera.png"
-                style="height: 65%; overflow: hidden"
-                alt="Imagen espinillera"
-              />
-              <div class="nameAndPrice">
-                <p>Espinilleras protector Venum Kontact Negro-Oro</p>
-      
-                <p style="font-weight: lighter">26,99€</p>
-              </div>
-              <!--   <p style="font-weight: lighter; padding: 0;">
+      <!--   <p style="font-weight: lighter; padding: 0;">
                       Guantes UFC rojos - Potencia y estilo en cada golpe.
                   </p> -->
-              <div class="botones">
-                <button>Añadir al carrito</button>
-              </div>
-            </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/mangacorta.png"
-          style="height: 65%; overflow: hidden"
-          alt="Imagen Guantes"
-        />
-        <div class="nameAndPrice">
-          <p>Camiseta manga corta Leone Flag</p>
-
-          <p style="font-weight: lighter">19,95€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
-      </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/compresionCorta.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen Camiseta de compresion corta"
-        />
-        <div class="nameAndPrice">
-          <p>Camiseta Hombre Under Armour Heatgear Gris
-          </p>
-
-          <p style="font-weight: lighter">35€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
-      </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/compresionLarga.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen camiseta de compresion larga"
-        />
-        <div class="nameAndPrice">
-          <p>SuperThermal Camiseta de Compresión Manga Larga</p>
-
-          <p style="font-weight: lighter">22,99€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
-      </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/short.png"
-          style="height: 90%; overflow: hidden"
-          alt="Imagen shorts negros"
-        />
-        <div class="nameAndPrice">
-          <p>AESTHETIC Grappling Shorts Negro</p>
-
-          <p style="font-weight: lighter">45€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
-      </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/pantalon.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen pantalon largo"
-        />
-        <div class="nameAndPrice">
-          <p>Pantalones Essentials Puma Black</p>
-
-          <p style="font-weight: lighter">24,95€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
-      </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/sudadera.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen sudadera"
-        />
-        <div class="nameAndPrice">
-          <p>Sudadera Generación MMA</p>
-
-          <p style="font-weight: lighter">35€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
+      <div class="botones">
+        <button>Añadir al carrito</button>
       </div>
     </div>
-           
-            <!--   ITEM   -->
 
-      <div class="grid2">
-      <div class="item">
-        <img
-          src="../images/bag.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen bolsa deportiva"
-        />
-        <div class="nameAndPrice">
-          <p>Bolsa Deporte Holdall Everlast Negro</p>
+    <!--   ITEM   -->
 
-          <p style="font-weight: lighter">34,99€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
+
+    <div class="item">
+      <img src="../images/mangacorta.png" style="height: 65%; overflow: hidden" alt="Imagen Guantes" />
+      <div class="nameAndPrice">
+        <p>Camiseta manga corta Leone Flag</p>
+
+        <p style="font-weight: lighter">19,95€</p>
       </div>
-           
-            <!--   ITEM   -->
-
-
-      <div class="item">
-        <img
-          src="../images/kimono.png"
-          style="height: 70%; overflow: hidden"
-          alt="Imagen kimono"
-        />
-        <div class="nameAndPrice">
-          <p>Kimono BJJ Buddha Infinity blanco + cinturón</p>
-
-          <p style="font-weight: lighter">69,95€</p>
-        </div>
-        <!--   <p style="font-weight: lighter; padding: 0;">
+      <!--   <p style="font-weight: lighter; padding: 0;">
                 Guantes UFC rojos - Potencia y estilo en cada golpe.
             </p> -->
-        <div class="botones">
-          <button>Añadir al carrito</button>
-        </div>
+      <div class="botones">
+        <button>Añadir al carrito</button>
       </div>
     </div>
-    <footer style="padding-top: 5%;">
-      <div class="icons">
-          <!--   Instagram logo svg  -->
-          <a href="https://www.instagram.com/lifeclub_mma/#" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
-                  <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                  <path d="M16.5 7.5l0 .01" />
-              </svg>
-          </a>
-          <!--   YT logo svg  -->
-          <a href="https://www.youtube.com/watch?v=fhQcRRi1fgg" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"
-                  data-darkreader-inline-fill="" style="--darkreader-inline-fill: currentColor;">
-                  <path
-                      d="M18 3a5 5 0 0 1 5 5v8a5 5 0 0 1 -5 5h-12a5 5 0 0 1 -5 -5v-8a5 5 0 0 1 5 -5zm-9 6v6a1 1 0 0 0 1.514 .857l5 -3a1 1 0 0 0 0 -1.714l-5 -3a1 1 0 0 0 -1.514 .857z">
-                  </path>
-              </svg>
-          </a>
 
-          <!--   WhatsApp logo svg  -->
-          <a href="https://api.whatsapp.com/send?phone=34603567120" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-linecap="round" stroke-linejoin="round" width="40" height="40" stroke-width="2"
-                  data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
-                  <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
-                  <path
-                      d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1">
-                  </path>
-              </svg>
-          </a>
+    <!--   ITEM   -->
 
-          <!--   Mail logo svg  -->
-          <a href="mailto:Lifeclubmma@gmail.com" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke=""
-                  style="--darkreader-inline-stroke: currentColor;" width="40" height="40" stroke-width="2">
-                  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
-                  <path d="M3 7l9 6l9 -6"></path>
-              </svg>
-          </a>
-          <!--   Maps logo svg  -->
-          <a href="https://www.google.com/maps/search/?api=1&query=Life+Club+MMA&query_place_id=ChIJCbHX3LK9pBIRstHX0PgmyDc"
-              target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-linecap="round" stroke-linejoin="round" width="40" height="40" stroke-width="2"
-                  data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
-                  <path d="M12 9.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"></path>
-                  <path d="M6.428 12.494l7.314 -9.252"></path>
-                  <path d="M10.002 7.935l-2.937 -2.545"></path>
-                  <path d="M17.693 6.593l-8.336 9.979"></path>
-                  <path
-                      d="M17.591 6.376c.472 .907 .715 1.914 .709 2.935a7.263 7.263 0 0 1 -.72 3.18a19.085 19.085 0 0 1 -2.089 3c-.784 .933 -1.49 1.93 -2.11 2.98c-.314 .62 -.568 1.27 -.757 1.938c-.121 .36 -.277 .591 -.622 .591c-.315 0 -.463 -.136 -.626 -.593a10.595 10.595 0 0 0 -.779 -1.978a18.18 18.18 0 0 0 -1.423 -2.091c-.877 -1.184 -2.179 -2.535 -2.853 -4.071a7.077 7.077 0 0 1 -.621 -2.967a6.226 6.226 0 0 1 1.476 -4.055a6.25 6.25 0 0 1 4.811 -2.245a6.462 6.462 0 0 1 1.918 .284a6.255 6.255 0 0 1 3.686 3.092z">
-                  </path>
-              </svg>
-          </a>
+
+    <div class="item">
+      <img src="../images/compresionCorta.png" style="height: 70%; overflow: hidden"
+        alt="Imagen Camiseta de compresion corta" />
+      <div class="nameAndPrice">
+        <p>Camiseta Hombre Under Armour Heatgear Gris
+        </p>
+
+        <p style="font-weight: lighter">35€</p>
       </div>
-      <div class="rights">
-          <p>&copy; 2025 Life Club MMA. Todos los derechos reservados.</p>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
       </div>
+    </div>
+
+    <!--   ITEM   -->
+
+
+    <div class="item">
+      <img src="../images/compresionLarga.png" style="height: 70%; overflow: hidden"
+        alt="Imagen camiseta de compresion larga" />
+      <div class="nameAndPrice">
+        <p>SuperThermal Camiseta de Compresión Manga Larga</p>
+
+        <p style="font-weight: lighter">22,99€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
+      </div>
+    </div>
+
+    <!--   ITEM   -->
+
+
+    <div class="item">
+      <img src="../images/short.png" style="height: 90%; overflow: hidden" alt="Imagen shorts negros" />
+      <div class="nameAndPrice">
+        <p>AESTHETIC Grappling Shorts Negro</p>
+
+        <p style="font-weight: lighter">45€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
+      </div>
+    </div>
+
+    <!--   ITEM   -->
+
+
+    <div class="item">
+      <img src="../images/pantalon.png" style="height: 70%; overflow: hidden" alt="Imagen pantalon largo" />
+      <div class="nameAndPrice">
+        <p>Pantalones Essentials Puma Black</p>
+
+        <p style="font-weight: lighter">24,95€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
+      </div>
+    </div>
+
+    <!--   ITEM   -->
+
+
+    <div class="item">
+      <img src="../images/sudadera.png" style="height: 70%; overflow: hidden" alt="Imagen sudadera" />
+      <div class="nameAndPrice">
+        <p>Sudadera Generación MMA</p>
+
+        <p style="font-weight: lighter">35€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <!--   ITEM   -->
+
+  <div class="grid2">
+    <div class="item">
+      <img src="../images/bag.png" style="height: 70%; overflow: hidden" alt="Imagen bolsa deportiva" />
+      <div class="nameAndPrice">
+        <p>Bolsa Deporte Holdall Everlast Negro</p>
+
+        <p style="font-weight: lighter">34,99€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
+      </div>
+    </div>
+
+    <!--   ITEM   -->
+
+
+    <div class="item">
+      <img src="../images/kimono.png" style="height: 70%; overflow: hidden" alt="Imagen kimono" />
+      <div class="nameAndPrice">
+        <p>Kimono BJJ Buddha Infinity blanco + cinturón</p>
+
+        <p style="font-weight: lighter">69,95€</p>
+      </div>
+      <!--   <p style="font-weight: lighter; padding: 0;">
+                Guantes UFC rojos - Potencia y estilo en cada golpe.
+            </p> -->
+      <div class="botones">
+        <button>Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+  <footer style="padding-top: 5%;">
+    <div class="icons">
+      <!--   Instagram logo svg  -->
+      <a href="https://www.instagram.com/lifeclub_mma/#" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+          <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+          <path d="M16.5 7.5l0 .01" />
+        </svg>
+      </a>
+      <!--   YT logo svg  -->
+      <a href="https://www.youtube.com/watch?v=fhQcRRi1fgg" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"
+          data-darkreader-inline-fill="" style="--darkreader-inline-fill: currentColor;">
+          <path
+            d="M18 3a5 5 0 0 1 5 5v8a5 5 0 0 1 -5 5h-12a5 5 0 0 1 -5 -5v-8a5 5 0 0 1 5 -5zm-9 6v6a1 1 0 0 0 1.514 .857l5 -3a1 1 0 0 0 0 -1.714l-5 -3a1 1 0 0 0 -1.514 .857z">
+          </path>
+        </svg>
+      </a>
+
+      <!--   WhatsApp logo svg  -->
+      <a href="https://api.whatsapp.com/send?phone=34603567120" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" width="40" height="40" stroke-width="2"
+          data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
+          <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+          <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1">
+          </path>
+        </svg>
+      </a>
+
+      <!--   Mail logo svg  -->
+      <a href="mailto:Lifeclubmma@gmail.com" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke=""
+          style="--darkreader-inline-stroke: currentColor;" width="40" height="40" stroke-width="2">
+          <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+          <path d="M3 7l9 6l9 -6"></path>
+        </svg>
+      </a>
+      <!--   Maps logo svg  -->
+      <a href="https://www.google.com/maps/search/?api=1&query=Life+Club+MMA&query_place_id=ChIJCbHX3LK9pBIRstHX0PgmyDc"
+        target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" width="40" height="40" stroke-width="2"
+          data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
+          <path d="M12 9.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"></path>
+          <path d="M6.428 12.494l7.314 -9.252"></path>
+          <path d="M10.002 7.935l-2.937 -2.545"></path>
+          <path d="M17.693 6.593l-8.336 9.979"></path>
+          <path
+            d="M17.591 6.376c.472 .907 .715 1.914 .709 2.935a7.263 7.263 0 0 1 -.72 3.18a19.085 19.085 0 0 1 -2.089 3c-.784 .933 -1.49 1.93 -2.11 2.98c-.314 .62 -.568 1.27 -.757 1.938c-.121 .36 -.277 .591 -.622 .591c-.315 0 -.463 -.136 -.626 -.593a10.595 10.595 0 0 0 -.779 -1.978a18.18 18.18 0 0 0 -1.423 -2.091c-.877 -1.184 -2.179 -2.535 -2.853 -4.071a7.077 7.077 0 0 1 -.621 -2.967a6.226 6.226 0 0 1 1.476 -4.055a6.25 6.25 0 0 1 4.811 -2.245a6.462 6.462 0 0 1 1.918 .284a6.255 6.255 0 0 1 3.686 3.092z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="rights">
+      <p>&copy; 2025 Life Club MMA. Todos los derechos reservados.</p>
+    </div>
   </footer>
- 
+
   <script src="../js/session.js"></script>
   <script src="../js/shoppingCart.js"></script>
-  </body>
+</body>
+
 </html>

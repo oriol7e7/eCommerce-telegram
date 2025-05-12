@@ -27,13 +27,13 @@ const loginBtn = document.getElementById('loginBtn'); // Botón de inicio de ses
 const userMenu = document.getElementById('userMenu'); // Menú desplegable del usuario
 const logoutBtn = document.getElementById('logoutBtn'); // Botón de cerrar sesión
 const loginInfoElement = document.getElementById('loginInfo'); // Área donde se muestra el usuario
-const ventaFormElement = document.getElementById('venta-form'); // Formulario de compra
+const ventaFormElement = document.getElementById('ventaForm'); // Formulario de compra
 
 // Verificación en consola para depuración
 console.log("Estado de sesión:", isLoggedIn);
 console.log("Usuario:", username);
 console.log("Elemento loginInfo:", loginInfoElement);
-console.log("Elemento venta-form:", ventaFormElement);
+console.log("Elemento ventaForm:", ventaFormElement);
 
 if (isLoggedIn && username) {
     console.log("Usuario logueado, actualizando la interfaz...");

@@ -247,30 +247,7 @@ button:hover {
 }
 
 
-/*
-@media (min-width: 1024px) {
-    
-    .iconCart, span {
-        width: 200%;
-        margin-left: 600%;
-    }
-    span {
-        width: 100%;
-        margin-left: 730%;
-        color: rgb(140, 247, 255);
-    }
-  }
-@media (max-width: 1024px) {
-    .iconCart, span {
-        width: 200%;
-        padding-left: 60%;
-    }
-    span {
-        width: 200%;
-        padding-left: 200%;
-        color: rgb(140, 247, 255);
-    }
-}*/
+
 
 /*
  MODAL CARRITO
@@ -342,7 +319,7 @@ hr {
     background-color: #383838;
     padding: 5px 10px;
     border-radius: 6px;
-    width: auto;
+    width: 50px;
 }
 
 

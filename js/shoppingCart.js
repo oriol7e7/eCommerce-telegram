@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const username = localStorage.getItem('username');
 
-    const loginInfoElement = document.getElementById('login-info');
-    const ventaFormElement = document.getElementById('venta-form');
+    const loginInfoElement = document.getElementById('loginInfo');
+    const ventaFormElement = document.getElementById('ventaForm');
 
     console.log("Estado de sesión:", isLoggedIn);
     console.log("Usuario:", username);

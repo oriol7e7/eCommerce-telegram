@@ -591,3 +591,24 @@ footer a:hover {
         right: 5px;
     }
 }
+
+.remove-item {
+    width: 40px;
+    background-color: transparent;
+    font-size: .8rem;
+    font-weight: 400;
+
+}
+
+.remove-item:hover {
+    background-color: transparent;
+    color: rgb(140, 247, 255);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4;
+
+}

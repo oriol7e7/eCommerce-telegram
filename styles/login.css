@@ -134,3 +134,53 @@ button:hover {
 
 
 }
+
+/*Ull per veure contrassenya*/
+.toggle-password {
+ background-color: transparent;
+ width: 25px;
+ padding: 0;
+position: fixed;
+top: 54%;
+left: 57%;
+z-index: 1004;
+}
+.toggle-password-register {
+    background-color: transparent;
+    width: 25px;
+    padding: 0;
+   position: fixed;
+   top: 57.5%;
+   left: 57%;
+   z-index: 1004;
+}
+   
+
+
+.toggle-password:hover, .toggle-password-register:hover {
+    background-color: transparent;
+}
+
+
+@media (max-width: 768px) {
+    .toggle-password {
+        background-color: transparent;
+        width: 25px;
+        padding: 0;
+       position: fixed;
+       top: 54%;
+       left: 69%;
+       z-index: 1004;
+       }
+       .toggle-password-register {
+        background-color: transparent;
+        width: 25px;
+        padding: 0;
+       position: fixed;
+       top: 57.5%;
+       left: 69%;
+       z-index: 1004;
+    }
+       
+
+}

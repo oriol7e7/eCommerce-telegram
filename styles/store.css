@@ -592,17 +592,24 @@ footer a:hover {
     }
 }
 
-.remove-item {
+.remove-item, .add-item {
     width: 40px;
     background-color: transparent;
     font-size: .8rem;
     font-weight: 400;
+    margin: 0;
+    padding: 0;
 
 }
 
-.remove-item:hover {
+.remove-item:hover, .add-item:hover {
     background-color: transparent;
     color: rgb(140, 247, 255);
+}
+
+.botones-add {
+    display: flex;
+    gap: 100px;
 }
 
 .cart-item {
@@ -610,5 +617,25 @@ footer a:hover {
     justify-content: center;
     align-items: center;
     gap: 4;
+    flex-direction: column;
 
+}
+
+
+.cart-item-info {
+font-size: .9rem;
+display: flex;
+gap: 20px;
+box-sizing: border-box;
+}
+
+.cart-item-quantity {
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: -10px;
+}
+
+.item-quantity {
+    color: rgb(140, 247, 255);
 }

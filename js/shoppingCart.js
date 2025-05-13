@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Comprueba si esta logeado o no i dependiendo de eso muestra el mensaje de login o aparece el formulario para pagar
     const cartToggle = document.getElementById('cart-toggle');
     const loginInfoElement = document.getElementById('loginInfo');
     const ventaFormElement = document.getElementById('ventaForm');
 
-    cartToggle.addEventListener('change', function() {
-        if (this.checked) {
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const username = localStorage.getItem('username');
+    cartToggle.addEventListener('change', function () {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const username = localStorage.getItem('username');
 
+        if (this.checked) {
             if (isLoggedIn && username) {
                 loginInfoElement.textContent = ` ${username}`;
                 ventaFormElement.style.display = 'block';
@@ -19,29 +18,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Suma un item al contador cuando hace click y guarda items en un array para renderizarlo dentro del carrito
-    const addButtons = document.querySelectorAll('.botones button');
     const cartItemsContainer = document.getElementById('cart-items');
     const cartCount = document.getElementById('cart-count');
-    const totalPriceElement = document.createElement('div'); // Se crea dinámicamente el total
-    
-    // Cargar carrito existente o crear uno nuevo
+
+    if (!cartItemsContainer || !cartCount) {
+        console.error('Error: No se encontraron los elementos del carrito en el DOM');
+        return;
+    }
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Función para actualizar todo el carrito
     function updateCart() {
-        // Mantener tu contador existente
-        cartCount.textContent = cart.length;
-        localStorage.setItem('cartCount', cart.length);
-        
-        // Renderizar productos
-        renderCartItems();
-        
-        // Calcular y mostrar total
-        updateTotal();
-        
-        // Guardar en localStorage
+        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
         localStorage.setItem('cart', JSON.stringify(cart));
+        renderCartItems();
+        updateTotal();
     }
 
     function renderCartItems() {
@@ -49,66 +40,106 @@ document.addEventListener("DOMContentLoaded", function () {
             cartItemsContainer.innerHTML = '<p>Tu carrito está vacío</p>';
             return;
         }
-        
-        let itemsHTML = '';
-        cart.forEach(item => {
-            itemsHTML += `
-                <div class="cart-item" data-id="${item.id}">
-                    <span>${item.name} - ${item.price}</span>
+
+        cartItemsContainer.innerHTML = cart.map(item => `
+            <div class="cart-item" data-id="${item.id}">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-img" width="100">
+                <div class="cart-item-info">
+                    <span class="cart-item-name">${item.name}</span>
+                    <span class="cart-item-price">${item.price}</span>
+                    <span class="cart-item-quantity">Cantidad: <span class="item-quantity">${item.quantity}</span></span>
+                </div>
+                <div class="botones-add">
+                    <button class="add-item">Añadir</button>
                     <button class="remove-item">Eliminar</button>
                 </div>
-            `;
-        });
-        cartItemsContainer.innerHTML = itemsHTML;
+            </div>
+        `).join('');
     }
 
     function updateTotal() {
         const total = cart.reduce((sum, item) => {
-            return sum + parseFloat(item.price.replace('€', ''));
+            const price = parseFloat(item.price.replace(/[^\d,.-]+/g, '').replace(',', '.'));
+            return sum + price * item.quantity;
         }, 0);
-        
-        // Insertar el total en el formulario de venta
-        if (!document.getElementById('total-price')) {
-            totalPriceElement.id = 'total-price';
-            totalPriceElement.innerHTML = `<strong>Total: ${total.toFixed(2)}€</strong>`;
-            ventaFormElement.appendChild(totalPriceElement);
-        } else {
-            document.getElementById('total-price').innerHTML = `<strong>Total: ${total.toFixed(2)}€</strong>`;
+
+        let totalElement = document.getElementById('total-price');
+        if (!totalElement) {
+            totalElement = document.createElement('div');
+            totalElement.id = 'total-price';
+            ventaFormElement.appendChild(totalElement);
         }
+
+        totalElement.innerHTML = `<strong>Total: ${total.toFixed(2)}€</strong>`;
     }
 
-    // Evento para añadir productos (manteniendo tu feedback visual)
-    addButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productCard = this.closest('.item');
-            const product = {
-                id: Date.now(),
-                name: productCard.querySelector('.nameAndPrice p:first-child').textContent,
-                price: productCard.querySelector('.nameAndPrice p:last-child').textContent,
-                image: productCard.querySelector('img').src // Obtenemos la URL de la imagen
-            };
-            
-            cart.push(product);
-            updateCart();
-            
-            // Mantener tu efecto visual
-            this.textContent = '✔ Item añadido';
-            setTimeout(() => {
-                this.textContent = 'Añadir al carrito';
-            }, 1000);
-        });
-    });
+    function attachAddButtonListeners() {
+        const addButtons = document.querySelectorAll('.botones button');
+        addButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const productCard = this.closest('.item');
+                if (!productCard) return;
 
-    // Evento para eliminar productos
-    cartItemsContainer.addEventListener('click', function(e) {
+                const name = productCard.querySelector('.nameAndPrice p:first-child')?.textContent;
+                const price = productCard.querySelector('.nameAndPrice p:last-child')?.textContent;
+                const image = productCard.querySelector('img')?.src;
+
+                if (!name || !price || !image) return;
+
+                // Comprobar si el producto ya está en el carrito
+                const existingItem = cart.find(item => item.name === name);
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: Date.now(),
+                        name,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+
+                updateCart();
+
+                // Feedback visual
+                const originalText = this.textContent;
+                this.textContent = '✔ Añadido';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 1000);
+            });
+        });
+    }
+
+    // Delegación para botones dentro del carrito
+    cartItemsContainer.addEventListener('click', function (e) {
+        const itemElement = e.target.closest('.cart-item');
+        if (!itemElement) return;
+
+        const name = itemElement.querySelector('.cart-item-name')?.textContent;
+        if (!name) return;
+
+        const itemIndex = cart.findIndex(item => item.name === name);
+        if (itemIndex === -1) return;
+
         if (e.target.classList.contains('remove-item')) {
-            const itemId = parseInt(e.target.closest('.cart-item').dataset.id);
-            cart = cart.filter(item => item.id !== itemId);
+            if (cart[itemIndex].quantity > 1) {
+                cart[itemIndex].quantity -= 1;
+            } else {
+                cart.splice(itemIndex, 1);
+            }
+            updateCart();
+        }
+
+        if (e.target.classList.contains('add-item')) {
+            cart[itemIndex].quantity += 1;
             updateCart();
         }
     });
 
-    // Inicializar carrito
+    // Inicializar
     updateCart();
-
+    attachAddButtonListeners();
 });

@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCartItems();
-        updateTotal();
+        updateTotal(); // Llama a esta función para actualizar precios
     }
 
     function renderCartItems() {
@@ -57,22 +57,41 @@ document.addEventListener("DOMContentLoaded", function () {
         `).join('');
     }
 
+    // --- FUNCIÓN ACTUALIZADA PARA MOSTRAR SUBTOTAL Y TOTAL ---
     function updateTotal() {
-        const total = cart.reduce((sum, item) => {
+        // 1. Calcula el subtotal (suma de todos los items)
+        const subtotal = cart.reduce((sum, item) => {
+            // Convierte precios como "10,99€" a 10.99 (float)
             const price = parseFloat(item.price.replace(/[^\d,.-]+/g, '').replace(',', '.'));
             return sum + price * item.quantity;
         }, 0);
 
-        let totalElement = document.getElementById('total-price');
-        if (!totalElement) {
-            totalElement = document.createElement('div');
-            totalElement.id = 'total-price';
-            ventaFormElement.appendChild(totalElement);
+        // 2. Muestra el Subtotal (si existe el elemento en el HTML)
+        const subtotalElement = document.getElementById('subtotal');
+        if (subtotalElement) {
+            subtotalElement.textContent = `Subtotal: ${subtotal.toFixed(2)}€`;
         }
 
-        totalElement.innerHTML = `<strong>Total: ${total.toFixed(2)}€</strong>`;
+        // 3. Calcula el Total (en este caso es igual al subtotal, pero puedes añadir IVA/descuentos)
+        const total = subtotal; // Si hay IVA: total = subtotal * 1.21;
+
+        // 4. Muestra el Total (si existe el elemento en el HTML)
+        const totalElement = document.getElementById('total');
+        if (totalElement) {
+            totalElement.textContent = `Total: ${total.toFixed(2)}€`;
+        }
+
+        // (Mantén esto si tu código ya usaba "total-price" para otro propósito)
+        let totalPriceElement = document.getElementById('total-price');
+        if (!totalPriceElement) {
+            totalPriceElement = document.createElement('div');
+            totalPriceElement.id = 'total-price';
+            ventaFormElement.appendChild(totalPriceElement);
+        }
+        totalPriceElement.innerHTML = `<strong>Total: ${total.toFixed(2)}€</strong>`;
     }
 
+    // --- Resto del código (sin cambios) ---
     function attachAddButtonListeners() {
         const addButtons = document.querySelectorAll('.botones button');
         addButtons.forEach(button => {
@@ -86,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!name || !price || !image) return;
 
-                // Comprobar si el producto ya está en el carrito
                 const existingItem = cart.find(item => item.name === name);
 
                 if (existingItem) {
@@ -103,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 updateCart();
 
-                // Feedback visual
                 const originalText = this.textContent;
                 this.textContent = '✔ Añadido';
                 setTimeout(() => {
@@ -113,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Delegación para botones dentro del carrito
     cartItemsContainer.addEventListener('click', function (e) {
         const itemElement = e.target.closest('.cart-item');
         if (!itemElement) return;

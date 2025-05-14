@@ -65,31 +65,26 @@ document.addEventListener("DOMContentLoaded", function () {
             const price = parseFloat(item.price.replace(/[^\d,.-]+/g, '').replace(',', '.'));
             return sum + price * item.quantity;
         }, 0);
-
-        // 2. Muestra el Subtotal (si existe el elemento en el HTML)
+    
+        // 2. Muestra el Subtotal en tu modal (id="subtotal")
         const subtotalElement = document.getElementById('subtotal');
         if (subtotalElement) {
-            subtotalElement.textContent = `Subtotal: ${subtotal.toFixed(2)}€`;
+            subtotalElement.textContent = `${subtotal.toFixed(2)}€`; // Solo el precio (sin texto "Subtotal")
         }
-
-        // 3. Calcula el Total (en este caso es igual al subtotal, pero puedes añadir IVA/descuentos)
-        const total = subtotal; // Si hay IVA: total = subtotal * 1.21;
-
-        // 4. Muestra el Total (si existe el elemento en el HTML)
+    
+        // 3. Muestra el Total en tu modal (id="total")
         const totalElement = document.getElementById('total');
         if (totalElement) {
-            totalElement.textContent = `Total: ${total.toFixed(2)}€`;
+            totalElement.textContent = `${subtotal.toFixed(2)}€`; // Mismo valor que subtotal (envío gratis)
         }
-
-        // (Mantén esto si tu código ya usaba "total-price" para otro propósito)
+    
+        // --- Elimina esta parte si no quieres el "total-price" extra ---
         let totalPriceElement = document.getElementById('total-price');
-        if (!totalPriceElement) {
-            totalPriceElement = document.createElement('div');
-            totalPriceElement.id = 'total-price';
-            ventaFormElement.appendChild(totalPriceElement);
+        if (totalPriceElement) {
+            totalPriceElement.remove(); // Elimina el elemento duplicado si existe
         }
-        totalPriceElement.innerHTML = `<strong>Total: ${total.toFixed(2)}€</strong>`;
     }
+    
 
     // --- Resto del código (sin cambios) ---
     function attachAddButtonListeners() {

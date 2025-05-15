@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../styles/store.css" />
   <link rel="icon" type="image/png" href="../images/logo.jpg" />
   <title>Compra aqui!</title>
+  <script src="https://js.stripe.com/v3/"></script>
   <meta lang="es" />
 </head>
 
@@ -59,47 +60,45 @@
         <p>Tu carrito está vacío</p>
       </div>
       <p id="loginInfo">Inicia sesión <a class="login-link" href="./login.html">aquí</a> para poder comprar</p>
-      <form style="display: none;" id="ventaForm">
-        <div id="info-pago" class="info-pago">
-          <label style="font-size: 1.2rem;" for="info-section">Modificar dirección de envío:</label>
-          <label for="name">Nombre completo:</label>
-          <input type="text" name="name" id="name" placeholder="Agrega aqui tu nombre completo:">
-          <br>
-          <br>
-          <label for="address">Agrega la dirección de envio:</label>
-          <label style="font-size: .85rem; font-weight: 500;" for="address">Direccion 1:</label>
-          <input style="width: 80%;" type="text" name="direccion2"
-            placeholder="Calle, número, piso (ejemplo: Av. Gran Vía, 123, 4ºB)" autocomplete="street-address">
-          <br>
-          <br>
-          <label style="font-size: .85rem; font-weight: 500;" for="address">Direccion 2:</label>
-          <input style="width: 80%;" type="text" name="direccion1"
-            placeholder="Código postal, ciudad, país (ejemplo: 08001, Barcelona, España)" autocomplete="street-address">
-          <br>
-          <br>
-          <label for="telefono">Añade tu número de telefono:</label>
-          <input type="tel" name="telefono" id="telefono" placeholder="Ej: 67234234...">
-        </div>
+      <div id="info-pago" class="info-pago" style="display: none;">
+        <label style="font-size: 1.2rem;" for="info-section">Modificar dirección de envío:</label>
+        <label for="name">Nombre completo:</label>
+        <input type="text" name="name" id="name" placeholder="Agrega aqui tu nombre completo:">
+        <br>
+        <br>
+        <label for="address">Agrega la dirección de envio:</label>
+        <label style="font-size: .85rem; font-weight: 500;" for="address">Direccion 1:</label>
+        <input style="width: 80%;" type="text" name="direccion2"
+          placeholder="Calle, número, piso (ejemplo: Av. Gran Vía, 123, 4ºB)" autocomplete="street-address">
+        <br>
+        <br>
+        <label style="font-size: .85rem; font-weight: 500;" for="address">Direccion 2:</label>
+        <input style="width: 80%;" type="text" name="direccion1"
+          placeholder="Código postal, ciudad, país (ejemplo: 08001, Barcelona, España)" autocomplete="street-address">
+        <br>
+        <br>
+        <label for="telefono">Añade tu número de telefono:</label>
+        <input type="tel" name="telefono" id="telefono" placeholder="Ej: 67234234...">
+      </div>
 
-        <br><br>
-        <div class="precio">
-          <h1>Resumen del pedido:</h1>
-          <div class="apartado-precio">
-            <h3>Subtotal: </h3>
-            <h4 id="subtotal">0€</h4>
-          </div>
-          <div class="apartado-precio">
-            <h3>Envío: </h3>
-            <h4 style="color: #00ff00;">Gratis</h4>
-          </div>
-          <hr>
-          <div class="apartado-precio">
-            <h3>Total: </h3>
-            <h4 id="total">0€</h4>
-          </div>
-        <button type="submit" id="submitBtn">Compra ya!</button>
+      <br><br>
+      <div class="precio">
+        <h1>Resumen del pedido:</h1>
+        <div class="apartado-precio">
+          <h3>Subtotal: </h3>
+          <h4 id="subtotal">0€</h4>
         </div>
-      </form>
+        <div class="apartado-precio">
+          <h3>Envío: </h3>
+          <h4 style="color: #00ff00;">Gratis</h4>
+        </div>
+        <hr>
+        <div class="apartado-precio">
+          <h3>Total: </h3>
+          <h4 id="total">0€</h4>
+        </div>
+        <button type="button" id="submitBtn" style="display: none;">Compra ya!</button>
+      </div>
     </div>
   </div>
   <div class="grids">
@@ -110,161 +109,116 @@
       <img src="../images/guantes.png" style="height: 70%; overflow: hidden" alt="Imagen Guantes" />
       <div class="nameAndPrice">
         <p>Guantes UFC</p>
-
         <p style="font-weight: lighter">35€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIYYtZqtmamsv4" data-price-id="price_1RNxR64Dkprid8KfGPVQvCjv">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
-
 
     <div class="item">
       <img src="../images/bucal.png" style="height: 70%; overflow: hidden" alt="Imagen bucal" />
       <div class="nameAndPrice">
         <p>Venum Challenger Bucal Rojo/Amarillo</p>
-
         <p style="font-weight: lighter">14,99€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZ9rRRYIlnTNd" data-price-id="price_1RNy0l4Dkprid8KfWp7apDS3">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
-
 
     <div class="item">
       <img src="../images/espinillera.png" style="height: 65%; overflow: hidden" alt="Imagen espinillera" />
       <div class="nameAndPrice">
         <p>Espinilleras protector Venum Kontact Negro-Oro</p>
-
         <p style="font-weight: lighter">26,99€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                      Guantes UFC rojos - Potencia y estilo en cada golpe.
-                  </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZBed3L0zHsOR" data-price-id="price_1RNy2z4Dkprid8Kf8twNPDsp">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
-
 
     <div class="item">
       <img src="../images/mangacorta.png" style="height: 65%; overflow: hidden" alt="Imagen Guantes" />
       <div class="nameAndPrice">
         <p>Camiseta manga corta Leone Flag</p>
-
         <p style="font-weight: lighter">19,95€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZIls4thQ2aD4" data-price-id="price_1RNy9r4Dkprid8Kfy9AGu8pe">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
-
 
     <div class="item">
       <img src="../images/compresionCorta.png" style="height: 70%; overflow: hidden"
         alt="Imagen Camiseta de compresion corta" />
       <div class="nameAndPrice">
-        <p>Camiseta Hombre Under Armour Heatgear Gris
-        </p>
-
+        <p>Camiseta Hombre Under Armour Heatgear Gris</p>
         <p style="font-weight: lighter">35€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZLBcMpmyhUnx" data-price-id="price_1RNyCX4Dkprid8KfsYl7Zktd">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
-
 
     <div class="item">
       <img src="../images/compresionLarga.png" style="height: 70%; overflow: hidden"
         alt="Imagen camiseta de compresion larga" />
       <div class="nameAndPrice">
         <p>SuperThermal Camiseta de Compresión Manga Larga</p>
-
         <p style="font-weight: lighter">22,99€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZMtzVmHcsxlv" data-price-id="price_1RNyDv4Dkprid8KfCCJ17uiq">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
-
 
     <div class="item">
       <img src="../images/short.png" style="height: 90%; overflow: hidden" alt="Imagen shorts negros" />
       <div class="nameAndPrice">
         <p>AESTHETIC Grappling Shorts Negro</p>
-
         <p style="font-weight: lighter">45€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZOJBuzM1VQll" data-price-id="price_1RNyFo4Dkprid8Kf3qii5u1e">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
-
 
     <div class="item">
       <img src="../images/pantalon.png" style="height: 70%; overflow: hidden" alt="Imagen pantalon largo" />
       <div class="nameAndPrice">
         <p>Pantalones Essentials Puma Black</p>
-
         <p style="font-weight: lighter">24,95€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZSla6haogAyb" data-price-id="price_1RNyJU4Dkprid8KfOnhXGPPW">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
 
-
     <div class="item">
       <img src="../images/sudadera.png" style="height: 70%; overflow: hidden" alt="Imagen sudadera" />
       <div class="nameAndPrice">
         <p>Sudadera Generación MMA</p>
-
         <p style="font-weight: lighter">35€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZTakNinqxdDI" data-price-id="price_1RNyKi4Dkprid8KfI6FjnXQa">Añadir al carrito</button>
       </div>
     </div>
   </div>
@@ -276,32 +230,23 @@
       <img src="../images/bag.png" style="height: 70%; overflow: hidden" alt="Imagen bolsa deportiva" />
       <div class="nameAndPrice">
         <p>Bolsa Deporte Holdall Everlast Negro</p>
-
         <p style="font-weight: lighter">34,99€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZVXBNpMEC6Py" data-price-id="price_1RNyM54Dkprid8Kf3Gl3VD7k">Añadir al carrito</button>
       </div>
     </div>
 
     <!--   ITEM   -->
 
-
     <div class="item">
       <img src="../images/kimono.png" style="height: 70%; overflow: hidden" alt="Imagen kimono" />
       <div class="nameAndPrice">
         <p>Kimono BJJ Buddha Infinity blanco + cinturón</p>
-
         <p style="font-weight: lighter">69,95€</p>
       </div>
-      <!--   <p style="font-weight: lighter; padding: 0;">
-                Guantes UFC rojos - Potencia y estilo en cada golpe.
-            </p> -->
       <div class="botones">
-        <button>Añadir al carrito</button>
+        <button data-product-id="prod_SIZWFS8KIjf8Hg" data-price-id="price_1RNyNJ4Dkprid8KfVldcVjZl">Añadir al carrito</button>
       </div>
     </div>
   </div>
@@ -366,9 +311,8 @@
       <p>&copy; 2025 Life Club MMA. Todos los derechos reservados.</p>
     </div>
   </footer>
-
+  
   <script src="../js/session.js"></script>
   <script src="../js/shoppingCart.js"></script>
 </body>
-
 </html>

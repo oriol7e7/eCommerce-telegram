@@ -150,23 +150,72 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+
+
+
+
+
+
 submitBtnElement.addEventListener('click', async function() {
     try {
+        // ============= NUEVO CÓDIGO PARA TELEGRAM ============= //
+        const telegramToken = "8059945037:AAFOX8hYxVavIUuHLx2LbbABVWQd3FBiP6U";
+        const chatId = "-4792860353";
+        
+        // Obtener datos del formulario (asumiendo que existen estos campos)
+        const name = document.getElementById('name')?.value || 'No proporcionado';
+        const addressLine1 = document.querySelector('input[name="direccion2"]')?.value || 'No proporcionada';
+        const addressLine2 = document.querySelector('input[name="direccion1"]')?.value || '';
+        const phone = document.getElementById('telefono')?.value || 'No proporcionado';
+
+        // Construir mensaje con el formato solicitado
+        let message = `🛒 *NUEVO PEDIDO* 🛒\n\n`;
+        message += `👤 *Nombre Comprador:* ${name}\n`;
+        message += `🏠 *Dirección:*\n`;
+        message += `   - ${addressLine1}\n`;
+        message += `   - ${addressLine2}\n`;
+        message += `📱 *Teléfono:* ${phone}\n\n`;
+        message += `📦 *Productos:*\n`;
+        
+        cart.forEach(item => {
+            const price = parseFloat(item.price.replace(/[^\d,.-]+/g, '').replace(',', '.'));
+            message += `   - ${item.name} (x${item.quantity}) - ${price.toFixed(2)}€\n`;
+        });
+        
+        const total = cart.reduce((sum, item) => {
+            const price = parseFloat(item.price.replace(/[^\d,.-]+/g, '').replace(',', '.'));
+            return sum + (price * item.quantity);
+        }, 0);
+        
+        message += `\n💰 *Total Precio:* ${total.toFixed(2)}€\n`;
+        message += `💳 *Método Pago:* Tarjeta`;
+
+        // Enviar a Telegram
+        await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        });
+        // ============= FIN DEL NUEVO CÓDIGO ============= //
+
+        // Tu código original continúa aquí...
         if (cart.length === 0) throw new Error('El carrito está vacío');
         
-        // 1. Preparamos los items para Stripe
         const lineItems = cart.map(item => {
-            // Verificación adicional para depuración
             if (!item.priceId) {
                 console.error("Producto sin priceId:", item);
                 throw new Error(`El producto "${item.name}" no está configurado para pagos`);
             }
-            
             return {
-                price: item.priceId, // Usamos priceId que ya está en el objeto del carrito
+                price: item.priceId,
                 quantity: item.quantity
             };
         });
+
 
         // 2. Depuración (puedes quitarlo después)
         console.log("Enviando a Stripe:", {

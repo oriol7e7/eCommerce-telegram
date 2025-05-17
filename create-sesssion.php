@@ -42,13 +42,16 @@ try {
         ];
     }
 
-    $session = \Stripe\Checkout\Session::create([
-        'payment_method_types' => ['card'],
-        'line_items' => $lineItems,
-        'mode' => 'payment',
-        'success_url' => 'http://localhost/success.php', // Cambia esto
-        'cancel_url' => 'http://localhost/cancel.php',   // Cambia esto
-    ]);
+$session = \Stripe\Checkout\Session::create([
+    'payment_method_types' => ['card'],
+    'line_items' => $lineItems,
+    'mode' => 'payment',
+    'success_url' => 'http://localhost/success.php?session_id={CHECKOUT_SESSION_ID}',
+    'cancel_url' => 'http://localhost/cancel.php',
+    'phone_number_collection' => ['enabled' => true], // Para recibir teléfono
+    'shipping_address_collection' => ['allowed_countries' => ['ES']], // Para recibir dirección
+    'metadata' => ['order_id' => uniqid()], // Identificador único
+]);
 
     echo json_encode(['id' => $session->id]);
 

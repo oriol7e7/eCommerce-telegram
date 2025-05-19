@@ -1,5 +1,43 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+// header('Content-Type: text/html; charset=utf-8'); 
+// Define el tipo de contenido como HTML con codificación UTF-8 para manejar caracteres especiales correctamente.
+
+// Configuración de la base de datos
+// $servidor = "localhost"; // Define el servidor donde está la base de datos.
+// $usuario = "root";       // Define el usuario con permisos para acceder a la base de datos.
+// $clave = "pirineus";     // Define la contraseña para acceder a la base de datos.
+// $bd = "life_club_MMA";   // Indica el nombre de la base de datos.
+
+
+// Conectar a la base de datos usando MySQLi
+// $conexion = new mysqli($servidor, $usuario, $clave, $bd);
+// Crea la conexión con la base de datos usando los datos definidos anteriormente.
+
+// if ($conn->connect_error) throw new Exception("Conexión fallida: " . $conn->connect_error); 
+// Si hay un error en la conexión, lanza una excepción mostrando el mensaje de error.
+
+
+// Verificar que el pedido existe y está asociado a una sesión de Stripe pendiente
+// $stmt = $conn->prepare("SELECT Pedido_ID FROM Pedidos WHERE stripe_session_id = ?");
+// Prepara una consulta SQL para buscar un pedido en la tabla `Pedidos` que tenga un `stripe_session_id` específico.
+
+// $stmt->bind_param("s", $session_id);
+// Asigna el valor de `$session_id` como parámetro de la consulta preparada, asegurando que se pase correctamente como cadena (`s` = string).
+
+// $stmt->execute();
+// Ejecuta la consulta preparada contra la base de datos.
+
+// $result = $stmt->get_result();
+// Obtiene los resultados de la consulta SQL en una variable.
+
+// $pedido = $result->fetch_assoc();
+// Convierte el resultado en un array asociativo para acceder a sus valores.
+
+// if (!$pedido) throw new Exception("Pedido no encontrado");
+// Si no se encuentra el pedido en la base de datos, lanza una excepción indicando que no existe.
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

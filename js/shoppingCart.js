@@ -78,30 +78,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function attachAddButtonListeners() {
+function attachAddButtonListeners() {
     const addButtons = document.querySelectorAll('.botones button');
     addButtons.forEach(button => {
         button.addEventListener('click', function() {
             const productCard = this.closest('.item');
             
-            // Captura todos los datos necesarios
+            // Asegúrate que todos estos datos existen
             const productData = {
-                name: productCard.querySelector('.nameAndPrice p:first-child')?.textContent,
-                price: productCard.querySelector('.nameAndPrice p:last-child')?.textContent,
-                image: productCard.querySelector('img')?.src,
-                productId: this.dataset.productId, // Forma más moderna
-                priceId: this.dataset.priceId,      // Usando dataset
-                quantity: 1
+                name: productCard.querySelector('.nameAndPrice p:first-child')?.textContent || 'Producto sin nombre',
+                price: productCard.querySelector('.nameAndPrice p:last-child')?.textContent || '0€',
+                image: productCard.querySelector('img')?.src || '',
+                priceId: this.dataset.priceId,
+                databaseProductId: parseInt(this.dataset.databaseId), // Asegúrate que existe en HTML
+                productId: this.dataset.productId, // Mantener por compatibilidad
+                quantity: 1,
+                id: Date.now() // ID único para el item
             };
 
-            // Validación crítica
-            if (!productData.priceId) {
-                console.error("Falta priceId en:", this);
-                alert(`Configuración incompleta para: ${productData.name}`);
+            // Validación completa en el momento de añadir
+            if (!productData.priceId || !productData.databaseProductId) {
+                console.error("Datos faltantes en el botón:", {
+                    button: this,
+                    dataset: this.dataset,
+                    productData
+                });
+                alert(`Error de configuración en: ${productData.name}`);
                 return;
             }
 
-            // Busca si ya existe en el carrito
+            // Buscar si ya existe en el carrito
             const existingIndex = cart.findIndex(item => 
                 item.priceId === productData.priceId
             );
@@ -109,18 +115,14 @@ document.addEventListener("DOMContentLoaded", function () {
             if (existingIndex >= 0) {
                 cart[existingIndex].quantity += 1;
             } else {
-                cart.push({
-                    ...productData,
-                    id: Date.now() // ID único
-                });
+                cart.push(productData); // Añadir el objeto completo
             }
 
             updateCart();
             
             // Feedback visual
-            const originalText = this.textContent;
             this.textContent = '✓ Añadido';
-            setTimeout(() => this.textContent = originalText, 1000);
+            setTimeout(() => this.textContent = 'Añadir al carrito', 1000);
         });
     });
 }
@@ -158,22 +160,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
 submitBtnElement.addEventListener('click', async function() {
     try {
-        // ============= NUEVO CÓDIGO PARA TELEGRAM ============= //
+        // ============= 1. RECOGER DATOS ============= //
+        const username = localStorage.getItem('username');
+        if (!username) throw new Error('Por favor, inicia sesión para continuar con la compra');
+        
+        // Obtener ambos campos de dirección
+        const direccion1 = document.querySelector('input[name="direccion1"]')?.value.trim();
+        const direccion2 = document.querySelector('input[name="direccion2"]')?.value.trim();
+        
+        // Validar dirección principal
+        if (!direccion2) {
+            throw new Error('Por favor, introduce al menos la dirección principal (Calle, número, piso)');
+        }
+        
+        // Construir dirección completa
+        const direccionCompleta = direccion1 ? `${direccion2}, ${direccion1}` : direccion2;
+
+        // Validar carrito
+        if (cart.length === 0) throw new Error('El carrito está vacío');
+        
+        // Preparar items para Stripe y BD
+        const lineItems = [];
+        const productosParaDB = [];
+        
+        cart.forEach(item => {
+            if (!item.priceId || !item.databaseProductId) {
+                console.error("Producto incompleto:", item);
+                throw new Error(`Faltan datos para el producto: ${item.name}`);
+            }
+            
+            const precioUnidad = parseFloat(item.price.replace(/[^\d,.-]+/g, '').replace(',', '.'));
+            
+            lineItems.push({
+                price: item.priceId,
+                quantity: item.quantity
+            });
+            
+            productosParaDB.push({
+                producto_id: item.databaseProductId,
+                cantidad: item.quantity,
+                precio_unidad: precioUnidad,
+                nombre: item.name
+            });
+        });
+
+        // ============= 2. CÓDIGO TELEGRAM ============= //
         const telegramToken = "8059945037:AAFOX8hYxVavIUuHLx2LbbABVWQd3FBiP6U";
         const chatId = "-4792860353";
-        
-        // Obtener datos del formulario (asumiendo que existen estos campos)
         const name = document.getElementById('name')?.value || 'No proporcionado';
-        const addressLine1 = document.querySelector('input[name="direccion2"]')?.value || 'No proporcionada';
-        const addressLine2 = document.querySelector('input[name="direccion1"]')?.value || '';
         const phone = document.getElementById('telefono')?.value || 'No proporcionado';
 
-        // Construir mensaje con el formato solicitado
         let message = `🛒 *NUEVO PEDIDO* 🛒\n\n`;
         message += `👤 *Nombre Comprador:* ${name}\n`;
-        message += `🏠 *Dirección:*\n`;
-        message += `   - ${addressLine1}\n`;
-        message += `   - ${addressLine2}\n`;
+        message += `🏠 *Dirección:* ${direccionCompleta}\n`;  // Usamos la variable correcta aquí
         message += `📱 *Teléfono:* ${phone}\n\n`;
         message += `📦 *Productos:*\n`;
         
@@ -200,44 +239,26 @@ submitBtnElement.addEventListener('click', async function() {
                 parse_mode: 'Markdown'
             })
         });
-        // ============= FIN DEL NUEVO CÓDIGO ============= //
 
-        // Tu código original continúa aquí...
-        if (cart.length === 0) throw new Error('El carrito está vacío');
-        
-        const lineItems = cart.map(item => {
-            if (!item.priceId) {
-                console.error("Producto sin priceId:", item);
-                throw new Error(`El producto "${item.name}" no está configurado para pagos`);
-            }
-            return {
-                price: item.priceId,
-                quantity: item.quantity
-            };
-        });
-
-
-        // 2. Depuración (puedes quitarlo después)
-        console.log("Enviando a Stripe:", {
-            cart: lineItems,
-            totalItems: cart.reduce((sum, item) => sum + item.quantity, 0)
-        });
-
-        // 3. Envío a tu endpoint PHP
+        // ============= 3. ENVÍO A PHP (STRIPE) ============= //
         const response = await fetch('../create-session.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ cart: lineItems })
+            body: JSON.stringify({ 
+                cart: lineItems,
+                productos: productosParaDB,
+                username: username,
+                direccion: direccionCompleta  // Usamos la misma variable aquí
+            })
         });
 
-        // 4. Manejo mejorado de errores
+        // Manejo de respuesta
         if (!response.ok) {
             const errorData = await response.json().catch(() => null);
-            console.error("Error del servidor:", errorData);
             throw new Error(errorData?.error || `Error en el pago (${response.status})`);
         }
 
-        // 5. Redirección a Stripe
+        // Redirección a Stripe
         const { id: sessionId } = await response.json();
         const { error } = await stripe.redirectToCheckout({ sessionId });
         

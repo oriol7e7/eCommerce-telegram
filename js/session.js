@@ -1,4 +1,3 @@
-// Definimos el emoji para representar al usuario.
 
 
 // Función para obtener parámetros de la URL.
@@ -14,9 +13,27 @@ const userParam = getQueryParam('user'); // Obtiene el nombre del usuario si est
 
 // Si el usuario ha iniciado sesión correctamente, guardamos los datos en el almacenamiento local.
 if (loginParam === 'success' && userParam) {
-    localStorage.setItem('isLoggedIn', 'true'); // Guarda el estado de sesión como 'true'
-    localStorage.setItem('username', decodeURIComponent(userParam)); // Guarda el nombre del usuario
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('username', decodeURIComponent(userParam));
+    
+    // Obtener user_id de la URL o hacer una petición al servidor si no está
+    const userIdParam = getQueryParam('user_id');
+    if (userIdParam) {
+        localStorage.setItem('user_id', userIdParam);
+        console.log('User ID almacenado:', userIdParam);
+    } else {
+        // Hacer petición al servidor para obtener el ID del usuario
+        fetch('/api/get-user-id?username=' + encodeURIComponent(userParam))
+            .then(response => response.json())
+            .then(data => {
+                if (data.user_id) {
+                    localStorage.setItem('user_id', data.user_id);
+                    console.log('User ID obtenido del servidor:', data.user_id);
+                }
+            });
+    }
 }
+
 
 // Recuperamos los datos de sesión guardados en `localStorage`.
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Verifica si el usuario está logueado

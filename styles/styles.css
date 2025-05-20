@@ -174,17 +174,20 @@ border-radius: 15px;
     }
 
     /* Reducir el tamaño de la barra de navegación */
-    nav, ul {
+    nav,
+    ul {
         height: 8vh;
         gap: 4%;
         padding-right: 2%;
-        width: 120vw;
-        position: relative;
-        left: -8%;
     }
 
     a {
-        font-size: 0.8rem;
+        font-size: .8rem;
+
+    }
+
+    .logoNav {
+        height: 60px;
     }
 
     .logoNav {

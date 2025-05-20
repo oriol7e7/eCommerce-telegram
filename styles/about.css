@@ -407,15 +407,20 @@ footer a:hover {
     }
 
     /* Reducir el tamaño de la barra de navegación */
-    nav, ul {
+    nav,
+    ul {
         height: 8vh;
         gap: 4%;
         padding-right: 2%;
-
     }
 
     a {
-        font-size: 0.8rem;
+        font-size: .8rem;
+
+    }
+
+    .logoNav {
+        height: 60px;
     }
 
     .logoNav {
@@ -438,6 +443,9 @@ footer a:hover {
         position: relative;
         left: -7%;
     }
+    .img img {
+        width: .1rem;   
+    }
     .team {
         height: 190vh;
     }
@@ -445,11 +453,29 @@ footer a:hover {
         width: 70%;
         height: 100vh;
     }
+
+    .atras img{
+        position: fixed;
+        left: -1%;
+        z-index: 100;
+        background-color: #505050;
+        border-radius: 10px;
+
+    }
+    .adelante img{
+        position: fixed;
+        left: 89%;
+        z-index: 110;
+        background-color: #505050;
+        border-radius: 10px;
+
+
+    }
 }
 
 @media (max-width: 568px) {
     a {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     .login {

@@ -330,9 +330,9 @@ footer a:hover {
 
 
 /* Grid de una columna para moviles*/
-@media (max-width: 768px) {
+@media (max-width: 840px) {
     .team  {
-        height: 160vh;
+        min-height: 97vh;
     }
     .profesores {
         grid-template-columns: 1fr;

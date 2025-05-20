@@ -2,8 +2,13 @@
     const passwordInput = document.getElementById('password');
 
     togglePassword.addEventListener('click', function () {
-        // Cambiar el tipo del campo de entrada (mostrar/ocultar)
-        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        // Cambiar tpo de input
+        let type;
+        if (passwordInput.type === 'password') {
+            type = 'text';  // Si estaba oculto, ahora se ve en texto.
+        }   else {
+            type = 'password';  // Si estaba visible, ahora se oculta.
+        }
         passwordInput.type = type;
 
         // Cambiar el icono según el estado

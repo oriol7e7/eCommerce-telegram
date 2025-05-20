@@ -170,7 +170,7 @@ button:hover {
         width: 25px;
         padding: 0;
         position: absolute;
-        top: 54.8%;
+        top: 54%;
         left: 78%;
         z-index: 1004;
     }
@@ -180,7 +180,7 @@ button:hover {
         width: 25px;
         padding: 0;
         position: absolute;
-        top: 59.1%;
+        top: 58.7%;
         left: 78%;
         height: 1.2rem;
         z-index: 1004;

@@ -1,39 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="es">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/inscripciones.css" />
     <link rel="icon" type="image/png" href="../images/logo.jpg" />
-    <title>Compra aqui!</title>
-    <meta lang="es" />
-  </head>
-  <body>
+    <title>Inscribete!</title>
+    <meta lang="es">
+    <style>
+        /* ANIMACIONS AMB INTERNAL CSS*/
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* APLICACIÓN DE ANIMACIONES */
+        .navbar {
+            /* Eliminamos cualquier animación del navbar para evitar desplazamientos */
+            animation: none;
+            transform: none;
+        }
+
+        .title1 {
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        form fieldset {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Animaciones escalonadas para los fieldsets */
+        form fieldset:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        form fieldset:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        form fieldset:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        form fieldset:nth-child(4) {
+            animation-delay: 1.1s;
+        }
+
+        .submit-btn {
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.3s both;
+        }
+
+        footer {
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s both;
+        }
+
+        /* Animaciones para los iconos del footer */
+        .icons a svg {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .icons a:nth-child(1) svg {
+            animation-delay: 1.6s;
+        }
+
+        .icons a:nth-child(2) svg {
+            animation-delay: 1.7s;
+        }
+
+        .icons a:nth-child(3) svg {
+            animation-delay: 1.8s;
+        }
+
+        .icons a:nth-child(4) svg {
+            animation-delay: 1.9s;
+        }
+
+        .icons a:nth-child(5) svg {
+            animation-delay: 2.0s;
+        }
+
+        .rights {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 2.1s both;
+        }
+
+        /* EFECTO DE CARGA PARA LOS INPUTS */
+        input,
+        select,
+        textarea {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Asignamos delays escalonados a los inputs */
+        input:nth-of-type(1) {
+            animation-delay: 0.6s;
+        }
+
+        input:nth-of-type(2) {
+            animation-delay: 0.65s;
+        }
+
+        .genero {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out 0.7s both;
+        }
+
+        input:nth-of-type(3) {
+            animation-delay: 0.75s;
+        }
+
+        input:nth-of-type(4) {
+            animation-delay: 0.8s;
+        }
+
+        input:nth-of-type(5) {
+            animation-delay: 0.85s;
+        }
+
+        select:nth-of-type(1) {
+            animation-delay: 0.9s;
+        }
+
+        select:nth-of-type(2) {
+            animation-delay: 0.95s;
+        }
+
+        select:nth-of-type(3) {
+            animation-delay: 1.0s;
+        }
+
+        textarea {
+            animation-delay: 1.05s;
+        }
+
+        /* MEDIA QUERIES PARA ANIMACIONES */
+        @media (max-width: 768px) {
+
+            /* Simplificamos las animaciones en móvil */
+            .title1,
+            .form,
+            form fieldset,
+            .submit-btn,
+            footer,
+            .icons a svg,
+            .rights,
+            input,
+            select,
+            textarea {
+                opacity: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
     <!-- 1. Añadido el checkbox para controlar la modal -->
     <input type="checkbox" id="cart-toggle" style="display: none;">
-    
+
     <nav class="navbar">
-      <img class="logoNav" src="../images/logo.jpg" alt="Logo Life Club MMA" />
-      <ul>
-        <li>
-          <a href="../index.html">Inicio</a>
-        </li>
-        <li>
-            <a href="./store.html">Explora la colección</a>
-          </li>
-        <li>
-          <a href="./about.html">Sobre nosotros</a>
-        </li>
-        <li>
-            <a id="loginBtn" class="login" href="./login.html">Inicia sesión!</a>
-        </li>
-      </ul>
-      
+        <img class="logoNav" src="../images/logo.jpg" alt="Logo Life Club MMA" />
+        <ul>
+            <li>
+                <a href="../index.html">Inicio</a>
+            </li>
+            <li>
+                <a href="./store.html">Explora la colección</a>
+            </li>
+            <li>
+                <a href="./about.html">Sobre nosotros</a>
+            </li>
+            <li>
+                <a id="loginBtn" class="login" href="./login.html">Inicia sesión!</a>
+            </li>
+        </ul>
+
     </nav>
     <div id="userMenu" style="display: none; z-index:100; position: absolute; right: 100px; top: 60px;  background:rgba(89, 89, 89, 0.9)
 ; padding: 8px; border-radius: 6px;">
-					<a href="#" id="logoutBtn">Cerrar sesión</a>
-				</div>
+        <a href="#" id="logoutBtn">Cerrar sesión</a>
+    </div>
     <section>
         <h1 class="title1">
             Inscribete a las mejores clases de MMA!
@@ -45,7 +215,7 @@
                     <legend>Datos personales</legend>
                     <label for="name">Nombre completo</label>
                     <input type="text" id="name" name="name" required placeholder="Escribe aqui tu nombre completo" />
-                    
+
                     <!-- SECCIÓN DE GÉNERO -->
                     <div class="genero">
                         <label>Género</label>
@@ -57,20 +227,20 @@
                         </div>
                     </div>
                 </fieldset>
-            
+
                 <!-- SECCIÓN DE CONTACTO E IDENTIFICACIÓN -->
                 <fieldset>
                     <legend>Contacto e identificación</legend>
                     <label for="telefono">Núm. de teléfono</label>
                     <input type="tel" id="telefono" name="telefono" required placeholder="Pon tu número de teléfono" />
-                    
+
                     <label for="dni">DNI/NIE/Pasaporte</label>
                     <input type="text" id="dni" name="dni" required placeholder="DNI/NIE o Pasaporte" />
-                    
+
                     <label for="fecha-nacimiento">Fecha de nacimiento</label>
                     <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required />
                 </fieldset>
-            
+
                 <!-- SECCIÓN DE EDAD Y CLASES -->
                 <fieldset>
                     <legend>Información de clases</legend>
@@ -79,9 +249,9 @@
                         <option value="">Selecciona tu edad</option>
                         <option value="kids">Kids 4-12 años</option>
                         <option value="junior">Junior 13-17 años</option>
-                        <option value="senior">Senior +18 años</option>      
+                        <option value="senior">Senior +18 años</option>
                     </select>
-                    
+
                     <label for="clase">Tipo de clase</label>
                     <select required name="clase" id="clase">
                         <option value="boxeo">Boxeo</option>
@@ -90,24 +260,25 @@
                         <option value="judo">Judo</option>
                         <option value="wrestling">Wrestling</option>
                     </select>
-                    
+
                     <label for="horario">Horario</label>
                     <select required name="horario" id="horario">
                         <option value="">Selecciona primero tu edad</option>
                     </select>
                 </fieldset>
-            
+
                 <!-- SECCIÓN DE INFORMACIÓN ADICIONAL -->
                 <fieldset>
                     <legend>Información adicional</legend>
                     <label for="comments">Información médica | Otros comentarios</label>
-                    <textarea placeholder="Añade aqui información médica relevante" name="comments" id="comments" rows="4"></textarea>
+                    <textarea placeholder="Añade aqui información médica relevante" name="comments" id="comments"
+                        rows="4"></textarea>
                 </fieldset>
-            
+
                 <!-- BOTÓN DE ENVÍO -->
-                
-                    <button type="submit" class="submit-btn">Enviar inscripción</button>
-                
+
+                <button type="submit" class="submit-btn">Enviar inscripción</button>
+
             </form>
         </div>
     </section>
@@ -131,7 +302,7 @@
                     </path>
                 </svg>
             </a>
-  
+
             <!--   WhatsApp logo svg  -->
             <a href="https://api.whatsapp.com/send?phone=34603567120" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -143,7 +314,7 @@
                     </path>
                 </svg>
             </a>
-  
+
             <!--   Mail logo svg  -->
             <a href="mailto:Lifeclubmma@gmail.com" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -173,10 +344,10 @@
             <p>&copy; 2025 Life Club MMA. Todos los derechos reservados.</p>
         </div>
     </footer>
-   
-  <script src="../js/inscripciones.js"></script>
-  <script src="../js/session.js"></script>
 
-    </body>
-  </html>
-  
+    <script src="../js/inscripciones.js"></script>
+    <script src="../js/session.js"></script>
+
+</body>
+
+</html>

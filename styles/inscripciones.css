@@ -185,7 +185,9 @@ form button {
     font-family: "Montserrat";
     margin-top: 30px;
 }
-
+.rights{
+    text-align: center;
+}
 form button:hover {
     background-color: rgb(80, 176, 255);
     color: white;

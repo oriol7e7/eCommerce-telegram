@@ -232,7 +232,7 @@ button:hover {
 .shoppingcart {
     position: absolute;
     right: 20%;
-    top: 15%;
+    top: 12%;
     transform: translateY(-50%);
     overflow: hidden;
 }
@@ -332,6 +332,7 @@ hr {
     padding: 30px;
     border-radius: 10px;
     max-width: 600px;
+    
     width: 90%;
     max-height: 70vh;
     overflow-y: auto;
@@ -436,7 +437,7 @@ select:focus {
         background: rgb(140, 247, 255);
         color: black;
         border-radius: 50%;
-        padding: 2px 8px;
+        padding: 1px 4px;
         font-size: 14px;
         position: relative;
         top: -15px;
@@ -477,6 +478,7 @@ footer a:hover {
     padding: 10px;
     border-radius: 15px;
 }
+
 
 .login:hover {
     background-color: rgb(80, 176, 255);
@@ -522,6 +524,7 @@ footer a:hover {
     #cart-count {
         top: -10px;
         right: 5px;
+        padding: 1px, 1px;
     }
 }
 
@@ -534,16 +537,17 @@ footer a:hover {
 
     .login {
         padding: 4px;
-        font-size: .5rem;
     }
 }
-
+.rights {
+    text-align: center;
+}
 
 @media (max-width: 1020px) {
 
     /* Reducir el tamaño del título */
     .title1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         width: 70%;
     }
 
@@ -561,12 +565,15 @@ footer a:hover {
     }
 
     .logoNav {
-        height: 60px;
+        height:50px;
+    }
+    a.login {
+        background-color: transparent;
     }
 
     /* Ajustar la posición del carrito de compras */
     .shoppingcart {
-        top: 15%;
+        top: 10%;
         right: 8%;
     }
 
@@ -577,18 +584,33 @@ footer a:hover {
 }
 
 @media (max-width: 1200px) {
+    .iconCart  {
+        width: 35px;  
+        height: 35px;
+      }
 
-
-    Ajustar la posición del carrito de compras .shoppingcart {
-        top: 15%;
+    .shoppingcart {
+        top: 10%;
         right: 8%;
     }
 
     #cart-count {
         top: -10px;
         right: 5px;
+        width: 10px;
+    }
+    .modal-content {
+        background: #191919;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 300px;
+    }
+    .apartado-precio {
+        gap: 40%;
+        margin-left: 20px;
     }
 }
+
 
 .remove-item, .add-item {
     width: 40px;

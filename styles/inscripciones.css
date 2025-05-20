@@ -391,3 +391,9 @@ textarea:focus {
         padding: 8px; /* Ajustar el padding */
     }
 }
+
+@media (max-width: 1105px) {
+    a.login {
+         background-color: transparent;
+    } 
+}

@@ -659,3 +659,9 @@ box-sizing: border-box;
 .item-quantity {
     color: rgb(140, 247, 255);
 }
+
+@media (max-width: 1105px) {
+    a.login {
+         background-color: transparent;
+    } 
+}

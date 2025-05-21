@@ -1,5 +1,4 @@
 # E-Commerce Integrat amb Telegram per a Life Club MMA
-
 ## Descripció del Projecte
 E-commerce complet per a **Life Club MMA** que inclou:
 - Botiga online d'equipament i roba
@@ -8,18 +7,16 @@ E-commerce complet per a **Life Club MMA** que inclou:
 - Passarel·la de pagament amb Stripe
 
 ## Funcionalitats Principals
-
 ### Integració amb Telegram
 - Notificacions en temps real per:
-  - Nous registres d'usuaris
   - Inscripcions completes
   - Comandes realitzades
-
+ 
 ### Botiga Online
 - Catàleg de productes amb imatges i descripcions
 - Sistema de carret de compra interactiu
 - Pagament segur amb Stripe (mode sandbox)
-
+ 
 ### Seguretat
 - Protecció contra SQL Injection
 - Encriptació de contrasenyes
@@ -58,5 +55,3 @@ E-commerce complet per a **Life Club MMA** que inclou:
 Aquest projecte està sota llicència MIT. Veure [LICENSE](LICENSE) per més informació.
 
 ---
-
-🔗 **Repositori GitHub**: [github.com/oriol7e7/ecommerce-telegram](https://github.com/oriol7e7/ecommerce-telegram)

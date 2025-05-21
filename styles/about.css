@@ -37,7 +37,7 @@ ul {
     font-family: "Inter", sans-serif;
     color: white;
     padding-right: 4.5%;
-    overflow-x: hidden;
+    overflow-x: auto;
     list-style-type: none;
     position: sticky;
     top: 0;

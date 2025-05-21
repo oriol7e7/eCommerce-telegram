@@ -664,4 +664,7 @@ box-sizing: border-box;
     a.login {
          background-color: transparent;
     } 
+    #userMenu {
+        margin-right: -85px;
+    }
 }

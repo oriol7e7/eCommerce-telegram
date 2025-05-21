@@ -396,4 +396,7 @@ textarea:focus {
     a.login {
          background-color: transparent;
     } 
+    #userMenu {
+        margin-right: -85px;
+    }
 }

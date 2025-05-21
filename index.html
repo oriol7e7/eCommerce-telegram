@@ -11,61 +11,106 @@
     <style>
         /*INTERNAL CSS PER ANIMACIONS DE LA PAGINA:*/
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
-        
+
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
-        
+
         @keyframes slideInFromLeft {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
-        
+
         @keyframes slideInFromRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
-        
+
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
-        
+
         /* APLICACIÓN DE ANIMACIONES */
         .navbar {
             animation: fadeIn 0.8s ease-out both;
         }
-        
+
         .hero {
             animation: fadeIn 1s ease-out 0.3s both;
         }
-        
-        
+
+
         .about {
             animation: fadeIn 1s ease-out 0.6s both;
         }
-        
+
 
 
         .icons a svg {
             transition: all 0.3s ease;
             filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
         }
-        
-        
-        
+
+
+
         .login {
             position: relative;
             overflow: hidden;
@@ -75,19 +120,30 @@
         .rights {
             animation: fadeIn 1s ease-out 1.5s both;
         }
-        
+
         /* Efecto de aparición escalonada para los elementos de navegación */
-        .navbar ul li:nth-child(1) { animation: slideInFromLeft 0.5s ease-out 0.2s both; }
-        .navbar ul li:nth-child(2) { animation: slideInFromLeft 0.5s ease-out 0.3s both; }
-        .navbar ul li:nth-child(3) { animation: slideInFromLeft 0.5s ease-out 0.4s both; }
-        .navbar ul li:nth-child(4) { animation: slideInFromRight 0.5s ease-out 0.5s both; }
-        
+        .navbar ul li:nth-child(1) {
+            animation: slideInFromLeft 0.5s ease-out 0.2s both;
+        }
+
+        .navbar ul li:nth-child(2) {
+            animation: slideInFromLeft 0.5s ease-out 0.3s both;
+        }
+
+        .navbar ul li:nth-child(3) {
+            animation: slideInFromLeft 0.5s ease-out 0.4s both;
+        }
+
+        .navbar ul li:nth-child(4) {
+            animation: slideInFromRight 0.5s ease-out 0.5s both;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar">
-        <img style="cursor: pointer;" onclick="window.location.href='./index.html'" class="logoNav" src="../images/logo.jpg" alt="Logo Life Club MMA" />
+        <img style="cursor: pointer;" onclick="window.location.href='./index.html'" class="logoNav"
+            src="../images/logo.jpg" alt="Logo Life Club MMA" />
         <ul>
             <li>
                 <a style="color: rgb(140, 247, 255);" href="./index.html">Inicio</a>
@@ -103,16 +159,16 @@
             </li>
             <li>
                 <a id="loginBtn" class="login" href="./pages/login.html">Inicia sesión!</a>
-				
+
             </li>
         </ul>
-        
+
 
     </nav>
-		<div id="userMenu" style="display: none; z-index:100; position: absolute; right: 100px; top: 60px;  background:rgba(89, 89, 89, 0.9)
+    <div id="userMenu" style="display: none; z-index:9999; position: absolute; right: 100px; top: 60px;  background:rgba(89, 89, 89, 0.9)
 ; padding: 8px; border-radius: 6px;">
-					<a href="#" id="logoutBtn">Cerrar sesión</a>
-				</div>
+        <a href="#" id="logoutBtn">Cerrar sesión</a>
+    </div>
     <div class="bg-image">
         <div class="hero">
             <h1>Life Club MMA</h1>
@@ -201,4 +257,5 @@
     </footer>
 </body>
 <script src="js/session.js"></script>
+
 </html>

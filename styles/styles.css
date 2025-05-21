@@ -229,4 +229,7 @@ border-radius: 15px;
     a.login {
          background-color: transparent;
     } 
+    #userMenu {
+        margin-right: -85px;
+    }
 }

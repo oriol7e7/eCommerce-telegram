@@ -7,7 +7,7 @@
         url('../fonts/Yearbook Solid.ttf') format('truetype');
     /* Fallback */
     font-weight: normal;
-    font-style: normal;
+    font-style: normal;f
 }
 
 body {
@@ -507,7 +507,7 @@ footer a:hover {
     }
 
     a {
-        font-size: .8rem;
+        font-size: .7rem;
 
     }
 
@@ -531,7 +531,7 @@ footer a:hover {
 
 @media (max-width: 568px) {
     a {
-        font-size: .8rem;
+        font-size: .7rem;
 
     }
 
@@ -560,7 +560,7 @@ footer a:hover {
     }
 
     a {
-        font-size: .8rem;
+        font-size: .7rem;
 
     }
 

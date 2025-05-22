@@ -137,6 +137,48 @@
         .navbar ul li:nth-child(4) {
             animation: slideInFromRight 0.5s ease-out 0.5s both;
         }
+        /* cookie-banner.css */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cookie-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#accept-cookies {
+    background: #27ae60;
+    color: white;
+}
+
+#configure-cookies {
+    background: #f39c12;
+    color: white;
+}
+
+#reject-cookies {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
     </style>
 </head>
 
@@ -177,6 +219,15 @@
             </p>
             <img style="height: 150px;" src="./images/logo.jpg" alt="Logo Life club MMA">
         </div>
+        <div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <p>🍪 Utilizamos cookies para el funcionamiento de la web. 
+       <a href="/pages/politica-cookies.html" style="color: #3498db;">Más información</a>
+    </p>
+    <div class="cookie-buttons">
+        <button id="accept-cookies" class="cookie-btn">Aceptar</button>
+        <button id="reject-cookies" class="cookie-btn">Rechazar</button>
+    </div>
+</div>
     </div>
     <section class="bottom">
         <div class="about">
@@ -192,6 +243,7 @@
             </iframe>
 
         </div>
+        
     </section>
     <footer>
         <div class="icons">
@@ -257,5 +309,5 @@
     </footer>
 </body>
 <script src="js/session.js"></script>
-
+<script src="js/cookieManager.js" defer></script>
 </html>

@@ -77,7 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
             totalElement.textContent = `${subtotal.toFixed(2)}€`;
         }
     }
-
+// 
+function saveCartToCookie() {
+    const cartData = JSON.stringify(carritoItems);
+    setCookie('cart_items', cartData, 3); // Guarda por 3 días
+}
 function attachAddButtonListeners() {
     const addButtons = document.querySelectorAll('.botones button');
     addButtons.forEach(button => {
